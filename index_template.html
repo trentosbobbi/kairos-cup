@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos Cup 2025 — Torneo Calcistico Neocatecumenale Nord Italia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-l:#E8C96A;--gold-d:#8B6914;--navy:#0B1628;--navy-m:#132038;--navy-l:#1E3050;--navy-s:#243758;--cream:#F5EDD8;--cream-d:#D9C99A;--red:#C0392B;--red-l:#E74C3C;--green:#27AE60;--muted:#8DA0BC;--white:#FFFFFF}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--navy);color:var(--cream);overflow-x:hidden}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#1E3A6A 0%,var(--navy) 65%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%)}
+.hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%)}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,.3);padding:6px 20px;border-radius:2px;margin-bottom:32px;animation:fadeUp .8s ease both}
+.hero-emblem{width:120px;height:120px;margin:0 auto 24px;animation:fadeUp .9s ease both .1s}
+.hero-emblem svg{width:100%;height:100%}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:900;line-height:.9;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-l) 0%,var(--gold) 50%,var(--gold-d) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 1s ease both .2s}
+.hero-sub{font-size:1.3rem;color:var(--cream-d);font-style:italic;margin-top:16px;letter-spacing:.05em;animation:fadeUp 1s ease both .35s}
+.hero-meta{display:flex;gap:40px;margin-top:40px;align-items:center;justify-content:center;animation:fadeUp 1s ease both .5s}
+.hero-meta-item{text-align:center}
+.hero-meta-num{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--gold);display:block}
+.hero-meta-label{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.hero-sep{width:1px;height:40px;background:rgba(201,168,76,.3)}
+.hero-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;animation:fadeUp 1s ease both .8s}
+.hero-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+nav{position:sticky;top:0;z-index:100;background:rgba(11,22,40,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-decoration:none}
+.nav-links{display:flex;list-style:none;gap:28px}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:all .2s}
+.nav-links a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.sw{padding:100px 40px;max-width:1300px;margin:0 auto}
+.sw-bg{background:var(--navy-m)}
+.sw-bg .sw{background:var(--navy-m)}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.sl::before{content:'';width:30px;height:1px;background:var(--gold)}
+.st{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--cream);margin-bottom:60px;line-height:1.1}
+.st span{color:var(--gold)}
+.standings-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.standings-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:10px 16px;text-align:center;border-bottom:1px solid rgba(201,168,76,.15)}
+.standings-table th:nth-child(2){text-align:left}
+.standings-table td{padding:12px 16px;text-align:center;border-bottom:1px solid rgba(255,255,255,.04);font-size:.95rem;transition:background .15s}
+.standings-table td:nth-child(2){text-align:left;font-weight:600}
+.standings-table tr:hover td{background:rgba(201,168,76,.05)}
+.standings-table tr.rk1 td{background:rgba(201,168,76,.12);font-weight:700}
+.pts{font-family:'Cinzel',serif;font-weight:700;color:var(--gold);font-size:1rem}
+.rb{font-family:'Cinzel',serif;font-weight:700;font-size:.85rem}
+.rb.r1{color:#FFD700}.rb.r2{color:#C0C0C0}.rb.r3{color:#CD7F32}.rb.rn{color:var(--muted)}
+.team-flag{display:inline-flex;align-items:center;gap:8px}
+.team-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.finals-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+@media(max-width:900px){.finals-grid{grid-template-columns:1fr 1fr}}
+.final-match{background:var(--navy-l);border:1px solid rgba(201,168,76,.15);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.final-match:hover{border-color:rgba(201,168,76,.4)}
+.final-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);padding:6px 12px;border-bottom:1px solid rgba(201,168,76,.15);text-align:center}
+.final-team{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:.88rem;font-weight:600;gap:8px}
+.final-team:first-of-type{border-bottom:1px solid rgba(201,168,76,.08)}
+.final-team.tbd{color:var(--muted);font-style:italic}
+.final-score{font-family:'Cinzel',serif;font-weight:700;font-size:1rem;color:var(--gold);min-width:20px;text-align:right}
+.scorers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.scorers-grid{grid-template-columns:1fr}}
+.sc-card{background:var(--navy-m);border:1px solid rgba(201,168,76,.15);border-radius:6px;overflow:hidden}
+.sc-head{background:linear-gradient(135deg,var(--navy-s),var(--navy-l));padding:20px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(201,168,76,.2)}
+.sc-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:50%;font-size:1.2rem}
+.sc-title{font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
+.sc-sub{font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.sr{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s}
+.sr:hover{background:rgba(201,168,76,.04)}.sr:last-child{border-bottom:none}
+.sr-rank{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;width:24px;text-align:center;flex-shrink:0}
+.r1c{color:#FFD700}.r2c{color:#C0C0C0}.r3c{color:#CD7F32}.rnc{color:var(--muted)}
+.sr-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--navy-s),var(--navy-l));border:2px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;color:var(--gold);flex-shrink:0}
+.sr-info{flex:1;min-width:0}
+.sr-name{font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-team{font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.sr-val{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--gold);flex-shrink:0}
+.sr-val small{font-size:.6rem;font-family:'JetBrains Mono',monospace;color:var(--muted);display:block;text-align:right;letter-spacing:.1em;font-weight:400}
+.com-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:800px){.com-grid{grid-template-columns:1fr}}
+.com{background:var(--navy-l);border:1px solid rgba(201,168,76,.12);border-radius:6px;padding:28px;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.com::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .3s}
+.com:hover{border-color:rgba(201,168,76,.3);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.com:hover::before{transform:scaleY(1)}
+.com.feat{grid-column:1/-1;background:linear-gradient(135deg,var(--navy-s),var(--navy-l));border-color:rgba(201,168,76,.3)}
+.com-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);padding:3px 10px;border-radius:2px;display:inline-block;margin-bottom:14px}
+.com-date{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);float:right;letter-spacing:.1em}
+.com-title{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.3;clear:both}
+.com.feat .com-title{font-size:1.4rem}
+.com-exc{font-size:.95rem;color:var(--muted);line-height:1.6;font-style:italic}
+.com-foot{margin-top:16px;display:flex;align-items:center;justify-content:space-between}
+.com-auth{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.com-read{font-size:.78rem;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.com-read:hover{border-bottom-color:var(--gold)}
+.sq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:24px}
+.sq-card{background:var(--navy-m);border:1px solid rgba(201,168,76,.12);border-radius:8px;overflow:hidden;transition:all .3s}
+.sq-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.35)}
+.sq-head{background:linear-gradient(135deg,var(--navy-s),var(--navy-l));padding:20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(201,168,76,.15)}
+.sq-crest{width:48px;height:48px;border-radius:50%;border:2px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.sq-name{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.sq-city{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.sq-rec{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--gold);text-align:right;flex-shrink:0}
+.sq-rec small{font-family:'JetBrains Mono',monospace;font-size:.52rem;color:var(--muted);display:block;font-weight:400;letter-spacing:.1em}
+.pl{display:flex;align-items:center;gap:10px;padding:8px 18px;transition:background .15s}
+.pl:hover{background:rgba(201,168,76,.05)}
+.pl-n{font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;color:var(--gold);width:20px;text-align:center;flex-shrink:0}
+.pl-name{font-size:.88rem;flex:1}
+.pl-r{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;flex-shrink:0}
+.rP{background:rgba(52,152,219,.15);color:#3498DB}.rD{background:rgba(46,204,113,.15);color:#2ECC71}
+.rC{background:rgba(243,156,18,.15);color:#F39C12}.rA{background:rgba(231,76,60,.15);color:#E74C3C}
+.sq-foot{padding:10px 18px;border-top:1px solid rgba(201,168,76,.08);display:flex;justify-content:space-between;align-items:center}
+.sq-stat-n{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--cream);display:block;text-align:center}
+.sq-stat-l{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;display:block}
+.mo{display:none;position:fixed;inset:0;background:rgba(7,14,26,.92);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.mo.open{display:flex}
+.mo-box{background:var(--navy-m);border:1px solid rgba(201,168,76,.3);border-radius:8px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:40px;position:relative;animation:fadeUp .3s ease}
+.mo-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;transition:color .2s;font-family:'JetBrains Mono',monospace}
+.mo-close:hover{color:var(--gold)}
+.mo-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block}
+.mo-title{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--cream);margin-bottom:8px;line-height:1.3}
+.mo-date{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin-bottom:24px;letter-spacing:.1em}
+.mo-body{font-size:1rem;line-height:1.75;color:var(--cream-d)}.mo-body p{margin-bottom:16px}
+.mo-sig{margin-top:24px;padding-top:16px;border-top:1px solid rgba(201,168,76,.15);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px 40px;text-align:center}
+.f-logo{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:900;color:var(--gold);margin-bottom:8px}
+.f-tag{font-size:.9rem;color:var(--muted);font-style:italic;margin-bottom:24px}
+.f-cross{font-size:1.8rem;color:rgba(201,168,76,.4);margin-bottom:24px}
+.f-info{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;color:rgba(141,160,188,.5);text-transform:uppercase}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge">Campo Giarizzole · Trieste · Calcio a 7</div>
+  <div class="hero-emblem">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="55" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="60" cy="60" r="48" stroke="rgba(201,168,76,0.3)" stroke-width=".5"/>
+      <line x1="60" y1="18" x2="60" y2="102" stroke="#C9A84C" stroke-width="2.5"/>
+      <line x1="20" y1="50" x2="100" y2="50" stroke="#C9A84C" stroke-width="2.5"/>
+      <circle cx="60" cy="72" r="14" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,.07)"/>
+      <path d="M60 58 L54 66 L57 74 L63 74 L66 66 Z" fill="rgba(201,168,76,.5)"/>
+      <circle cx="38" cy="34" r="2" fill="#C9A84C"/><circle cx="60" cy="28" r="2" fill="#C9A84C"/><circle cx="82" cy="34" r="2" fill="#C9A84C"/>
+      <text x="60" y="48" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#C9A84C" font-weight="700">KAIROS</text>
+    </svg>
+  </div>
+  <h1 class="hero-title">KAIROS<br>CUP</h1>
+  <p class="hero-sub">Torneo delle Comunità Neocatecumenali · Nord Italia 2025</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">Squadre</span></div>
+    <div class="hero-sep"></div>
+    <div class="hero-meta-item"><span class="hero-meta-num">45</span><span class="hero-meta-label">Partite</span></div>
+    <div class="hero-sep"></div>
+    <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">Gioc./Squadra</span></div>
+  </div>
+  <div class="hero-hint">Scorri per scoprire</div>
+</header>
+
+<nav>
+  <a href="#home" class="nav-logo">⚽ KAIROS CUP</a>
+  <ul class="nav-links">
+    <li><a href="#campionato">Classifica</a></li>
+    <li><a href="#finali">Finali</a></li>
+    <li><a href="#statistiche">Statistiche</a></li>
+    <li><a href="#comunicati">Comunicati</a></li>
+    <li><a href="#squadre">Squadre</a></li>
+  </ul>
+
+</nav>
+
+<!-- CLASSIFICA -->
+<div class="sw-bg">
+<div class="sw" id="campionato">
+  <div class="sl">Fase 1</div>
+  <h2 class="st">Campionato <span>Avulso</span></h2>
+  <table class="standings-table">
+    <thead>
+      <tr><th>Pos</th><th>Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>Dr</th><th>Pt</th></tr>
+    </thead>
+    <tbody id="standings-body"></tbody>
+  </table>
+  <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-top:10px">G=Giocate · V=Vinte · N=Nulle · P=Perse · GF=Gol Fatti · GS=Gol Subiti · Dr=Differenza · Pt=Punti</div>
+</div></div>
+
+<!-- FINALI -->
+<div class="sw" id="finali">
+  <div class="sl">Fase 2</div>
+  <h2 class="st">Finali per <span>Posizione</span></h2>
+  <div class="finals-grid" id="finals-grid"></div>
+  <div style="font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-top:16px;font-style:italic">Le abbinamenti si aggiornano automaticamente dalla classifica del campionato avulso.</div>
+</div>
+
+<!-- STATISTICHE -->
+<div class="sw-bg">
+<div class="sw" id="statistiche">
+  <div class="sl">Statistiche</div>
+  <h2 class="st">Migliori <span>Giocatori</span></h2>
+  <div class="scorers-grid">
+    <div class="sc-card">
+      <div class="sc-head"><div class="sc-icon">⚽</div><div><div class="sc-title">Capocannonieri</div><div class="sc-sub">Classifica gol</div></div></div>
+      <div id="scorers-gol"></div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-head"><div class="sc-icon">🎯</div><div><div class="sc-title">Re degli Assist</div><div class="sc-sub">Classifica assist</div></div></div>
+      <div id="scorers-assist"></div>
+    </div>
+    <div class="sc-card">
+      <div class="sc-head"><div class="sc-icon">🧤</div><div><div class="sc-title">Miglior Portiere</div><div class="sc-sub">Per voto medio</div></div></div>
+      <div id="scorers-portiere"></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- COMUNICATI -->
+<div class="sw" id="comunicati">
+  <div class="sl">Ufficiali</div>
+  <h2 class="st">Comunicati <span>Stampa</span></h2>
+  <div class="com-grid">
+    <div class="com feat" onclick="openMo('c1')">
+      <span class="com-date">Maggio 2025</span>
+      <span class="com-tag">⭐ In evidenza</span>
+      <div class="com-title">Benvenuti alla Kairos Cup 2025 — il torneo ha inizio!</div>
+      <div class="com-exc">Dieci comunità neocatecumenali del Nord Italia si sfidano sul campo di Giarizzole a Trieste. Un'occasione di sport, fraternità e fede.</div>
+      <div class="com-foot"><span class="com-auth">Segreteria Kairos Cup</span><a class="com-read">Leggi tutto →</a></div>
+    </div>
+    <div class="com" onclick="openMo('c2')">
+      <span class="com-date">Maggio 2025</span>
+      <span class="com-tag">Regolamento</span>
+      <div class="com-title">Formato ufficiale: campionato avulso + 5 finali per posizione</div>
+      <div class="com-exc">La commissione tecnica ha stabilito il formato: girone unico tra le 10 squadre, poi finali abbinate dalla classifica.</div>
+      <div class="com-foot"><span class="com-auth">Commissione Tecnica</span><a class="com-read">Leggi tutto →</a></div>
+    </div>
+    <div class="com" onclick="openMo('c3')">
+      <span class="com-date">Maggio 2025</span>
+      <span class="com-tag">Logistica</span>
+      <div class="com-title">Campo di Giarizzole: informazioni pratiche per le squadre</div>
+      <div class="com-exc">Parcheggio disponibile, spogliatoi aperti dalle 8:00, punto ristoro in loco. Portare tessera sanitaria.</div>
+      <div class="com-foot"><span class="com-auth">Organizzazione</span><a class="com-read">Leggi tutto →</a></div>
+    </div>
+    <div class="com" onclick="openMo('c4')">
+      <span class="com-date">Maggio 2025</span>
+      <span class="com-tag">Partecipanti</span>
+      <div class="com-title">Le 10 squadre ufficialmente iscritte alla Kairos Cup 2025</div>
+      <div class="com-exc">Torino, Venezia, Mestre, Merano, Pordenone, San Giorgio di Nogaro, Udine, Trieste: tutte le comunità presenti.</div>
+      <div class="com-foot"><span class="com-auth">Segreteria Kairos Cup</span><a class="com-read">Leggi tutto →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- SQUADRE -->
+<div class="sw-bg">
+<div class="sw" id="squadre">
+  <div class="sl">Partecipanti</div>
+  <h2 class="st">Le <span>Squadre</span></h2>
+  <div class="sq-grid" id="squadre-grid"></div>
+</div></div>
+
+<footer>
+  <div class="f-logo">KAIROS CUP</div>
+  <div class="f-tag">Uniti nella fede, uniti nel gioco · Campo Giarizzole · Trieste</div>
+  <div class="f-cross">✝</div>
+  <div class="f-info">Torneo Calcistico Neocatecumenale · Nord Italia · Edizione 2025</div>
+</footer>
+
+<!-- COMUNICATO MODALS -->
+<div class="mo" id="mo-c1" onclick="closeMo(event,this)">
+  <div class="mo-box"><button class="mo-close" onclick="this.closest('.mo').classList.remove('open')">✕</button>
+    <span class="mo-tag">⭐ In evidenza</span>
+    <div class="mo-title">Benvenuti alla Kairos Cup 2025!</div>
+    <div class="mo-date">Trieste, Campo Giarizzole · Maggio 2025</div>
+    <div class="mo-body"><p>Con grande gioia annunciamo l'inizio della Kairos Cup 2025, il primo torneo di calcio a 7 delle comunità neocatecumenali del Nord Italia. Dieci squadre provenienti da Torino, Venezia, Mestre, Merano, Pordenone, San Giorgio di Nogaro, Udine e Trieste si ritrovano nel nome dello sport e della fraternità cristiana.</p><p>Il campo di Giarizzole a Trieste ospiterà tutte le partite, in un clima di festa e comunione tra le famiglie delle comunità partecipanti. <em>In hoc signo vinces!</em></p></div>
+    <div class="mo-sig">Segreteria Organizzativa · Kairos Cup 2025</div>
+  </div>
+</div>
+<div class="mo" id="mo-c2" onclick="closeMo(event,this)">
+  <div class="mo-box"><button class="mo-close" onclick="this.closest('.mo').classList.remove('open')">✕</button>
+    <span class="mo-tag">Regolamento Ufficiale</span>
+    <div class="mo-title">Formato del torneo: campionato + finali</div>
+    <div class="mo-date">Commissione Tecnica · Maggio 2025</div>
+    <div class="mo-body"><p><strong>Fase 1 — Campionato avulso:</strong> tutte le 10 squadre in girone unico (tutti contro tutti). 3 pt vittoria, 1 pareggio, 0 sconfitta. 45 partite totali, 9 giornate.</p><p><strong>Fase 2 — Finali per posizione:</strong> 1ª vs 2ª, 3ª vs 4ª, 5ª vs 6ª, 7ª vs 8ª, 9ª vs 10ª. In caso di parità: calci di rigore. Formato calcio a 7.</p></div>
+    <div class="mo-sig">Commissione Tecnica Kairos Cup · delibera n. 01/2025</div>
+  </div>
+</div>
+<div class="mo" id="mo-c3" onclick="closeMo(event,this)">
+  <div class="mo-box"><button class="mo-close" onclick="this.closest('.mo').classList.remove('open')">✕</button>
+    <span class="mo-tag">Logistica</span>
+    <div class="mo-title">Campo di Giarizzole — Info pratiche</div>
+    <div class="mo-date">Organizzazione · Maggio 2025</div>
+    <div class="mo-body"><p><strong>Indirizzo:</strong> Campo Sportivo di Giarizzole, Trieste (TS)</p><p><strong>Orari:</strong> Apertura dalle 8:00. Prima partita ore 9:00.</p><p><strong>Parcheggio:</strong> disponibile nelle vicinanze. Arrivare 30 minuti prima della propria partita.</p><p><strong>Cosa portare:</strong> tessera sanitaria, divisa, acqua. Punto ristoro in loco.</p></div>
+    <div class="mo-sig">Organizzazione Kairos Cup 2025</div>
+  </div>
+</div>
+<div class="mo" id="mo-c4" onclick="closeMo(event,this)">
+  <div class="mo-box"><button class="mo-close" onclick="this.closest('.mo').classList.remove('open')">✕</button>
+    <span class="mo-tag">Partecipanti</span>
+    <div class="mo-title">Le 10 squadre della Kairos Cup 2025</div>
+    <div class="mo-date">Segreteria · Maggio 2025</div>
+    <div class="mo-body"><p><strong>Piemonte:</strong> Torino 1, Torino 2<br><strong>Veneto:</strong> Mestre 1, Venezia/Mestre<br><strong>Alto Adige:</strong> Merano<br><strong>Friuli-Venezia Giulia:</strong> Pordenone, San Giorgio di Nogaro, Udine, Trieste 1, Trieste 2</p><p>Auguri a tutte le squadre per un torneo indimenticabile!</p></div>
+    <div class="mo-sig">Segreteria Kairos Cup 2025</div>
+  </div>
+</div>
+
+
+
+<script>
+const TEAM_COLORS=["#E74C3C","#3498DB","#2ECC71","#9B59B6","#E67E22","#1ABC9C","#F39C12","#27AE60","#C0392B","#2980B9"];
+const TEAM_ICONS=["🔴","🔵","🟢","🟣","🟠","🔷","🟡","🌿","❤️","⚡"];
+const ALL_TEAMS=["Torino 1","Torino 2","Mestre 1","Venezia/Mestre","Merano","Pordenone","San Giorgio di Nogaro","Udine","Trieste 1","Trieste 2"];
+const TEAM_CITIES={"Torino 1":"📍 Torino, Piemonte","Torino 2":"📍 Torino, Piemonte","Mestre 1":"📍 Mestre, Veneto","Venezia/Mestre":"📍 Venezia/Mestre, Veneto","Merano":"📍 Merano, Alto Adige","Pordenone":"📍 Pordenone, FVG","San Giorgio di Nogaro":"📍 San Giorgio di Nogaro, FVG","Udine":"📍 Udine, FVG","Trieste 1":"📍 Trieste, FVG","Trieste 2":"📍 Trieste, FVG"};
+
+let D=__KAIROS_DATA__;
+
+function renderStandings(){
+  const rows=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
+  document.getElementById('standings-body').innerHTML=rows.map((t,i)=>{
+    const rk=i+1,rc=rk<=3?'rk'+rk:'',rb=['r1','r2','r3','rn'][Math.min(rk-1,3)];
+    const sym=rk===1?'🏆':rk===2?'🥈':rk===3?'🥉':rk;
+    const idx=ALL_TEAMS.indexOf(t.squadra);
+    const col=TEAM_COLORS[idx>=0?idx:i%10];
+    const dr=t.Dr||((t.GF||0)-(t.GS||0));
+    return `<tr class="${rc}"><td><span class="rb ${rb}">${sym}</span></td>
+    <td><span class="team-flag"><span class="team-dot" style="background:${col}"></span>${t.squadra}</span></td>
+    <td>${t.G||0}</td><td>${t.V||0}</td><td>${t.N||0}</td><td>${t.P||0}</td>
+    <td>${t.GF||0}</td><td>${t.GS||0}</td>
+    <td style="color:${dr>0?'#2ECC71':dr<0?'#E74C3C':'inherit'}">${dr>0?'+':''}${dr}</td>
+    <td class="pts">${t.Pt||0}</td></tr>`;
+  }).join('');
+}
+
+function renderFinals(){
+  const srt=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
+  const labels=["Finale 1°/2°","Finale 3°/4°","Finale 5°/6°","Finale 7°/8°","Finale 9°/10°"];
+  document.getElementById('finals-grid').innerHTML=labels.map((lbl,i)=>{
+    const t1=srt[i*2]?.squadra||'TBD', t2=srt[i*2+1]?.squadra||'TBD';
+    const ok=srt[i*2]&&srt[i*2+1];
+    return `<div class="final-match"><div class="final-label">${lbl}</div>
+    <div class="final-team${ok?'':' tbd'}"><span>${t1}</span><span class="final-score" style="color:${ok?'var(--gold)':'var(--muted)'}">—</span></div>
+    <div class="final-team${ok?'':' tbd'}"><span>${t2}</span><span class="final-score" style="color:${ok?'var(--gold)':'var(--muted)'}">—</span></div></div>`;
+  }).join('');
+}
+
+function srRow(p,i,key,unit){
+  const rk=i+1,rc=['r1c','r2c','r3c','rnc'][Math.min(rk-1,3)];
+  const ini=(p.nome||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+  return `<div class="sr"><div class="sr-rank ${rc}">${rk}</div>
+  <div class="sr-av">${ini}</div>
+  <div class="sr-info"><div class="sr-name">${p.nome||'—'}</div><div class="sr-team">${p.squadra||''}</div></div>
+  <div class="sr-val">${p[key]||0}<small>${unit}</small></div></div>`;
+}
+const noData=m=>`<div class="no-data">${m}<br>Usa "Aggiorna Dati" per importare.</div>`;
+
+function renderScorers(){
+  const can=(D.cannonieri||[]).filter(p=>p.nome);
+  document.getElementById('scorers-gol').innerHTML=can.length?can.sort((a,b)=>(b.gol||0)-(a.gol||0)).slice(0,5).map((p,i)=>srRow(p,i,'gol','GOL')).join(''):noData('Nessun dato cannonieri');
+  document.getElementById('scorers-assist').innerHTML=can.length?can.sort((a,b)=>(b.assist||0)-(a.assist||0)).slice(0,5).map((p,i)=>srRow(p,i,'assist','ASS')).join(''):noData('Nessun dato assist');
+  const por=(D.portieri||[]).filter(p=>p.nome);
+  document.getElementById('scorers-portiere').innerHTML=por.length?por.sort((a,b)=>(b.voto||0)-(a.voto||0)).slice(0,5).map((p,i)=>srRow(p,i,'voto','VOTO')).join(''):noData('Nessun dato portieri');
+}
+
+function renderSquadre(){
+  const srt=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
+  document.getElementById('squadre-grid').innerHTML=ALL_TEAMS.map((name,i)=>{
+    const st=D.classifica.find(t=>t.squadra===name)||{G:0,V:0,N:0,P:0,GF:0,GS:0,Pt:0};
+    const col=TEAM_COLORS[i%10],icon=TEAM_ICONS[i%10],city=TEAM_CITIES[name]||'📍 Nord Italia';
+    const roster=[{n:1,nome:'Portiere',r:'P'},{n:2,nome:'Difensore 1',r:'D'},{n:3,nome:'Difensore 2',r:'D'},{n:7,nome:'Centrocampista 1',r:'C'},{n:8,nome:'Centrocampista 2',r:'C'},{n:9,nome:'Ala',r:'C'},{n:10,nome:'Attaccante',r:'A'}];
+    return `<div class="sq-card">
+    <div class="sq-head">
+      <div class="sq-crest" style="background:linear-gradient(135deg,${col}44,${col}22)">${icon}</div>
+      <div><div class="sq-name">${name}</div><div class="sq-city">${city}</div></div>
+      <div class="sq-rec">${st.V||0}V ${st.N||0}N ${st.P||0}P<small>record</small></div>
+    </div>
+    <div style="padding:8px 0">${roster.map(p=>`<div class="pl"><div class="pl-n">${p.n}</div><div class="pl-name">${p.nome}</div><span class="pl-r r${p.r}">${p.r}</span></div>`).join('')}</div>
+    <div class="sq-foot">
+      <div><span class="sq-stat-n">${st.GF||0}</span><span class="sq-stat-l">Gol Fatti</span></div>
+      <div><span class="sq-stat-n">${st.GS||0}</span><span class="sq-stat-l">Gol Subiti</span></div>
+      <div><span class="sq-stat-n">${st.Pt||0}</span><span class="sq-stat-l">Punti</span></div>
+    </div></div>`;
+  }).join('');
+}
+
+
+function openMo(id){document.getElementById('mo-'+id).classList.add('open');}
+function closeMo(e,el){if(e.target===el)el.classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mo.open').forEach(m=>m.classList.remove('open'));});
+
+function renderAll(){renderStandings();renderFinals();renderScorers();renderSquadre();}
+renderAll();
+</script>
+</body>
+</html>
