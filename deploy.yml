@@ -3,10 +3,10 @@ name: Aggiorna Sito Kairos Cup
 on:
   push:
     paths:
-      - "KairosCup_Dati.xlsx"   # si attiva solo quando carichi l'Excel
-      - "index_template.html"   # oppure quando aggiorni il template
+      - "KairosCup_Dati.ods"
+      - "index_template.html"
       - "build.py"
-  workflow_dispatch:            # permette di avviare manualmente da GitHub
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,7 +20,6 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,8 +29,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Installa openpyxl
-        run: pip install openpyxl
+      - name: Installa odfpy
+        run: pip install odfpy
 
       - name: Genera il sito HTML
         run: python build.py

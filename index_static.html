@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos Cup 2025 — Il Torneo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A84C;--gold-l:#E8C96A;--gold-d:#8B6914;--navy:#0B1628;--navy-m:#132038;--navy-l:#1E3050;--navy-s:#243758;--cream:#F5EDD8;--cream-d:#D9C99A;--muted:#8DA0BC}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--navy);color:var(--cream);overflow-x:hidden}
+
+/* ── NAV ─────────────────────────────────────────────────────────────────── */
+nav{position:sticky;top:0;z-index:100;background:rgba(11,22,40,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px}
+.nav-logo{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-decoration:none}
+.nav-links{display:flex;list-style:none;gap:28px}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:all .2s}
+.nav-links a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold)}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);background:var(--gold);border:none;padding:9px 20px;border-radius:2px;cursor:pointer;font-weight:700;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--gold-l)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
+.nav-hamburger span{width:22px;height:2px;background:var(--gold);border-radius:2px;transition:all .25s;display:block}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── HERO ────────────────────────────────────────────────────────────────── */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#1E3A6A 0%,var(--navy) 65%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%)}
+.hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;padding:0 20px}
+.hero-badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,.3);padding:6px 20px;border-radius:2px;margin-bottom:36px;display:inline-block;animation:fadeUp .8s ease both}
+.hero-emblem{width:110px;height:110px;margin:0 auto 28px;animation:fadeUp .9s ease both .1s}
+.hero-emblem svg{width:100%;height:100%}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:.95;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-l) 0%,var(--gold) 50%,var(--gold-d) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 1s ease both .2s;margin-bottom:16px}
+.hero-sub{font-size:1.25rem;color:var(--cream-d);font-style:italic;letter-spacing:.05em;animation:fadeUp 1s ease both .35s;margin-bottom:44px}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:14px 32px;border-radius:2px;text-decoration:none;font-weight:700;transition:all .2s;animation:fadeUp 1s ease both .5s}
+.hero-cta:hover{background:var(--gold-l);transform:translateY(-2px)}
+.hero-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;animation:fadeUp 1s ease both .8s}
+.hero-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+/* ── SEZIONI CONTENUTO ───────────────────────────────────────────────────── */
+.sw{padding:100px 40px;max-width:1100px;margin:0 auto}
+.sl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.sl::before{content:'';width:30px;height:1px;background:var(--gold)}
+.st{font-family:'Cinzel',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--cream);margin-bottom:48px;line-height:1.1}
+.st span{color:var(--gold)}
+
+/* ── KAIROS: significato ─────────────────────────────────────────────────── */
+.kairos-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:100px}
+.kairos-word{font-family:'Cinzel',serif;font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:1;background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.04));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em;user-select:none}
+.kairos-def{border-left:2px solid var(--gold);padding-left:28px}
+.kairos-def-gr{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.kairos-def-text{font-size:1.25rem;color:var(--cream);line-height:1.7;margin-bottom:20px}
+.kairos-def-sub{font-size:1rem;color:var(--muted);line-height:1.7;font-style:italic}
+
+/* ── TRE COLONNE ─────────────────────────────────────────────────────────── */
+.torneo-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.12);border-radius:4px;overflow:hidden;margin-bottom:80px}
+.torneo-col{background:var(--navy-m);padding:40px 32px;transition:background .2s}
+.torneo-col:hover{background:var(--navy-l)}
+.torneo-col-icon{font-size:2rem;margin-bottom:18px;display:block}
+.torneo-col-title{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:14px}
+.torneo-col-text{font-size:1rem;color:var(--cream-d);line-height:1.75}
+.torneo-col-text strong{color:var(--cream)}
+
+/* ── NUMERI ──────────────────────────────────────────────────────────────── */
+.numeri-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.12);border-radius:4px;overflow:hidden;margin-bottom:80px}
+.numero-item{background:var(--navy-m);padding:36px 24px;text-align:center}
+.numero-val{font-family:'Cinzel',serif;font-size:3rem;font-weight:900;color:var(--gold);display:block;line-height:1}
+.numero-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:10px;display:block}
+
+/* ── QUOTE ───────────────────────────────────────────────────────────────── */
+.quote-section{background:var(--navy-m);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);padding:80px 40px;text-align:center}
+.quote-text{font-family:'Crimson Pro',Georgia,serif;font-size:clamp(1.4rem,3vw,2rem);font-style:italic;color:var(--cream);max-width:760px;margin:0 auto 24px;line-height:1.6}
+.quote-text::before{content:'«';color:var(--gold)}
+.quote-text::after{content:'»';color:var(--gold)}
+.quote-attr{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+
+/* ── TIMELINE EDIZIONI ───────────────────────────────────────────────────── */
+.timeline{position:relative;padding-left:40px;margin-bottom:16px}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.2))}
+.tl-item{position:relative;margin-bottom:48px}
+.tl-item::before{content:'';position:absolute;left:-36px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.2)}
+.tl-year{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+.tl-title{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--cream);margin-bottom:10px}
+.tl-text{font-size:1rem;color:var(--cream-d);line-height:1.75}
+.tl-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:10px}
+.tl-badge.done{background:rgba(39,174,96,.15);color:#2ECC71;border:1px solid rgba(39,174,96,.25)}
+.tl-badge.live{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+
+/* ── CTA FINALE ──────────────────────────────────────────────────────────── */
+.cta-block{text-align:center;padding:80px 40px;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.06) 0%,transparent 70%)}
+.cta-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--cream);margin-bottom:16px}
+.cta-sub{font-size:1.1rem;color:var(--muted);margin-bottom:36px;font-style:italic}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:16px 36px;border-radius:2px;text-decoration:none;font-weight:700;transition:all .2s}
+.cta-btn:hover{background:var(--gold-l);transform:translateY(-2px)}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px 40px;text-align:center}
+.footer-logo{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--gold);letter-spacing:.15em;margin-bottom:12px}
+.footer-sub{font-size:.85rem;color:var(--muted);letter-spacing:.05em}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:0 20px;height:56px;position:relative}
+  .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(11,22,40,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.2);flex-direction:column;gap:0;padding:8px 0 16px;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:14px 24px;font-size:.72rem;border-top:1px solid rgba(255,255,255,.04)}
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .hero{min-height:85vh}
+  .kairos-block{grid-template-columns:1fr;gap:32px;margin-bottom:60px}
+  .kairos-word{font-size:5rem;text-align:center}
+  .torneo-cols{grid-template-columns:1fr;gap:2px}
+  .torneo-col{padding:28px 24px}
+  .numeri-grid{grid-template-columns:1fr 1fr}
+  .sw{padding:60px 20px}
+  .quote-section{padding:50px 20px}
+  .cta-block{padding:50px 20px}
+  footer{padding:36px 20px}
+}
+@media(max-width:400px){
+  .numeri-grid{grid-template-columns:1fr 1fr}
+  .kairos-word{font-size:4rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">⚽ KAIROS CUP</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="active" onclick="closeNav()">Il Torneo</a></li>
+    <li><a href="torneo.html" onclick="closeNav()">Classifica &amp; Risultati</a></li>
+  </ul>
+  <a href="torneo.html" class="nav-cta">Vai alla Classifica →</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Campo Giarizzole · Trieste · Calcio a 7</div>
+    <div class="hero-emblem">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity=".4"/>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="#C9A84C" stroke-width=".5" opacity=".2"/>
+        <polygon points="60,14 72,46 106,46 79,66 89,98 60,78 31,98 41,66 14,46 48,46" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity=".6"/>
+        <circle cx="60" cy="60" r="8" fill="#C9A84C" opacity=".8"/>
+        <text x="60" y="108" text-anchor="middle" font-family="Cinzel, serif" font-size="8" fill="#C9A84C" opacity=".7" letter-spacing="3">2025</text>
+      </svg>
+    </div>
+    <h1 class="hero-title">Kairos<br>Cup</h1>
+    <p class="hero-sub">Torneo delle Comunità Neocatecumenali · Nord Italia</p>
+    <a href="torneo.html" class="hero-cta">Classifica &amp; Risultati →</a>
+  </div>
+  <div class="hero-hint">Scopri il torneo</div>
+</header>
+
+<!-- IL NOME -->
+<div class="sw">
+  <div class="sl">Il nome</div>
+  <h2 class="st">Cos'è il <span>Kairos</span></h2>
+  <div class="kairos-block">
+    <div class="kairos-word">καιρός</div>
+    <div class="kairos-def">
+      <div class="kairos-def-gr">Dal greco antico</div>
+      <p class="kairos-def-text">Il <em>kairos</em> è il momento opportuno, il tempo carico di significato — diverso dal <em>chronos</em>, il tempo che scorre.</p>
+      <p class="kairos-def-sub">Serviva un nome evocativo, che desse peso a quello che si stava costruendo. Non una semplice kermesse sportiva, ma un appuntamento atteso, significativo. Il kairos — il momento giusto — era la parola giusta.</p>
+    </div>
+  </div>
+
+  <div class="torneo-cols">
+    <div class="torneo-col">
+      <div class="torneo-col-icon">🌱</div>
+      <h3 class="torneo-col-title">Come nasce</h3>
+      <p class="torneo-col-text">
+        Il torneo nasce nel 2025 da un'iniziativa privata, da una persona che ha sentito il bisogno di ridare vita a qualcosa che mancava: un torneo delle comunità neocatecumenali. Non una competizione fine a sé stessa, ma un pretesto per ritrovarsi, stare insieme, condividere un weekend di sport e fraternità.
+      </p>
+    </div>
+    <div class="torneo-col">
+      <div class="torneo-col-icon">🤝</div>
+      <h3 class="torneo-col-title">Perché esiste</h3>
+      <p class="torneo-col-text">
+        Il focus non è la coppa. È l'incontro. Le comunità neocatecumenali del Triveneto si sono ritrovate nella prima edizione, e già dalla seconda — questa — il torneo si apre a tutto il <strong>Nord Italia</strong>. Dieci posti, dieci comunità, un unico campo: Campo Giarizzole, Trieste.
+      </p>
+    </div>
+    <div class="torneo-col">
+      <div class="torneo-col-icon">📅</div>
+      <h3 class="torneo-col-title">Quando e dove</h3>
+      <p class="torneo-col-text">
+        Il weekend del <strong>19 e 20 settembre 2025</strong> a Trieste. Calcio a 7, formato campionato avulso con finali per posizione. I posti sono <strong>limitati a 10 squadre</strong>: ogni edizione è un'occasione unica, irripetibile — proprio come il kairos.
+      </p>
+    </div>
+  </div>
+
+  <div class="numeri-grid">
+    <div class="numero-item">
+      <span class="numero-val">2ª</span>
+      <span class="numero-label">Edizione</span>
+    </div>
+    <div class="numero-item">
+      <span class="numero-val">10</span>
+      <span class="numero-label">Squadre</span>
+    </div>
+    <div class="numero-item">
+      <span class="numero-val">2</span>
+      <span class="numero-label">Giorni di torneo</span>
+    </div>
+    <div class="numero-item">
+      <span class="numero-val">∞</span>
+      <span class="numero-label">Comunità coinvolte</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <p class="quote-text">Non una gara da vincere, ma un tempo da abitare insieme.</p>
+  <div class="quote-attr">Kairos Cup · 2025</div>
+</div>
+
+<!-- EDIZIONI -->
+<div class="sw">
+  <div class="sl">Le edizioni</div>
+  <h2 class="st">La <span>Storia</span></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-badge done">Completata</span>
+      <div class="tl-year">2024 — Prima Edizione</div>
+      <div class="tl-title">Kairos Cup · Triveneto</div>
+      <p class="tl-text">La prima edizione ha riunito le comunità neocatecumenali del Triveneto. Un weekend di calcio a 7, fraternità e incontro. Il seme è stato piantato.</p>
+    </div>
+    <div class="tl-item">
+      <span class="tl-badge live">In corso · 2025</span>
+      <div class="tl-year">2025 — Seconda Edizione</div>
+      <div class="tl-title">Kairos Cup · Nord Italia</div>
+      <p class="tl-text">Il torneo si espande. Dalle comunità del Triveneto a tutto il Nord Italia — dieci squadre, un solo campo, un solo fine: stare insieme. 19–20 settembre, Campo Giarizzole, Trieste.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h2 class="cta-title">Segui il torneo in diretta</h2>
+  <p class="cta-sub">Classifica aggiornata, risultati, statistiche e molto altro.</p>
+  <a href="torneo.html" class="cta-btn">Vai alla Classifica →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">⚽ KAIROS CUP</div>
+  <p class="footer-sub">Torneo delle Comunità Neocatecumenali · Nord Italia · 2025</p>
+</footer>
+
+<script>
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeNav(){
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+</script>
+</body>
+</html>
