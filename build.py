@@ -15,7 +15,7 @@ from odf import teletype
 
 ROOT     = Path(__file__).parent
 ODS      = ROOT / "KairosCup_Dati.ods"
-TEMPLATE = ROOT / "index_template.html"
+TEMPLATE = ROOT / "index_static.html"
 OUT_DIR  = ROOT / "docs"
 OUT_HTML = OUT_DIR / "index.html"
 
