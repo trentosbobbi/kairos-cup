@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
 """
-Kairos Cup 2025 — Build Script (ODS)
-Legge KairosCup_Dati.ods, calcola tutto in Python, genera docs/index.html.
+Kairos Cup 2025 — Build Script
+Legge KairosCup_Dati.ods, calcola tutto in Python, genera:
+  - docs/torneo.html  (classifica, risultati, statistiche)
+  - docs/index.html   (copia di index_static.html — pagina informativa)
 
 Uso: python build.py
 Dipendenze: pip install odfpy
 """
 
-import json, sys
+import json, sys, shutil
 from pathlib import Path
 from odf.opendocument import load
 from odf.table import Table, TableRow, TableCell
 from odf import teletype
 
-ROOT     = Path(__file__).parent
-ODS      = ROOT / "KairosCup_Dati.ods"
-TEMPLATE = ROOT / "torneo.html"
-OUT_DIR  = ROOT / "docs"
-OUT_HTML = OUT_DIR / "index_static.html"
+ROOT         = Path(__file__).parent
+ODS          = ROOT / "KairosCup_Dati.ods"
+TEMPLATE     = ROOT / "index_template.html"   # → diventa torneo.html
+INDEX_STATIC = ROOT / "index_static.html"     # → diventa index.html
+OUT_DIR      = ROOT / "docs"
+OUT_TORNEO   = OUT_DIR / "torneo.html"
+OUT_INDEX    = OUT_DIR / "index.html"
 
 ALL_TEAMS = [
     "Torino 1","Torino 2","Mestre 1","Venezia/Mestre",
@@ -27,7 +31,6 @@ ALL_TEAMS = [
 
 # ── ODS reader ────────────────────────────────────────────────────────────────
 def expand_sheet(sheet, max_rows=300, max_cols=10):
-    """Espande celle/righe ripetute e restituisce una lista di liste."""
     result = []
     for tr in sheet.getElementsByType(TableRow):
         row_rep = int(tr.getAttribute("numberrowsrepeated") or 1)
@@ -56,16 +59,12 @@ def safe_int(val, default=0):
 def safe_str(val):
     return str(val).strip() if val is not None else ""
 
-# ── Calcola classifica da PARTITE ─────────────────────────────────────────────
-def calc_classifica(rows_partite):
+# ── Calcoli ───────────────────────────────────────────────────────────────────
+def calc_classifica(rows):
     stats = {t:{"G":0,"V":0,"N":0,"P":0,"GF":0,"GS":0} for t in ALL_TEAMS}
-
-    # Riga 0=titolo, 1=section, 2=header → dati da riga 3
-    # Leggi solo righe con giornata "G1"…"G9" (non "FIN")
-    for row in rows_partite[3:]:
+    for row in rows[3:]:
         if len(row) < 7: continue
-        giornata = safe_str(row[1])
-        if not giornata.startswith("G"): continue
+        if not safe_str(row[1]).startswith("G"): continue
         ta = safe_str(row[2]); tb = safe_str(row[6])
         try:
             ga = int(float(str(row[3]))); gb = int(float(str(row[5])))
@@ -77,78 +76,68 @@ def calc_classifica(rows_partite):
         if   ga>gb: stats[ta]["V"]+=1; stats[tb]["P"]+=1
         elif ga<gb: stats[tb]["V"]+=1; stats[ta]["P"]+=1
         else:       stats[ta]["N"]+=1; stats[tb]["N"]+=1
-
     result = []
     for team, s in stats.items():
-        pt = s["V"]*3 + s["N"]; dr = s["GF"]-s["GS"]
-        result.append({**s, "squadra":team, "Pt":pt, "Dr":dr})
-    result.sort(key=lambda t: (-t["Pt"], -t["Dr"], -t["GF"]))
-    for i,r in enumerate(result): r["pos"] = i+1
+        pt=s["V"]*3+s["N"]; dr=s["GF"]-s["GS"]
+        result.append({**s,"squadra":team,"Pt":pt,"Dr":dr})
+    result.sort(key=lambda t:(-t["Pt"],-t["Dr"],-t["GF"]))
+    for i,r in enumerate(result): r["pos"]=i+1
     return result
 
-# ── Calcola cannonieri/portieri da GIOCATORI ──────────────────────────────────
-def calc_giocatori(rows_giocatori):
+def calc_giocatori(rows):
     players = []
-    # Riga 0=titolo, 1=header → dati da riga 2
-    for row in rows_giocatori[2:]:
+    for row in rows[2:]:
         if len(row) < 9: continue
         nome = safe_str(row[2])
         if not nome: continue
         players.append({
-            "nome":    nome,
-            "squadra": safe_str(row[3]),
-            "gol":     safe_int(row[4]),
-            "assist":  safe_int(row[5]),
-            "voto":    safe_int(row[6]),
-            "presenze":safe_int(row[7]),
-            "ruolo":   safe_str(row[8]),
+            "nome":nome,"squadra":safe_str(row[3]),
+            "gol":safe_int(row[4]),"assist":safe_int(row[5]),
+            "voto":safe_int(row[6]),"presenze":safe_int(row[7]),
+            "ruolo":safe_str(row[8]),
         })
-
     cannonieri = sorted([p for p in players if p["gol"]>0],
-                        key=lambda p: (-p["gol"],-p["assist"]))[:10]
+                        key=lambda p:(-p["gol"],-p["assist"]))[:10]
     portieri   = sorted([p for p in players
                          if p["ruolo"].lower()=="portiere" and p["voto"]>0],
-                        key=lambda p: -p["voto"])[:5]
+                        key=lambda p:-p["voto"])[:5]
     return (
-        [{"nome":p["nome"],"squadra":p["squadra"],
-          "gol":p["gol"],"assist":p["assist"],"voto":p["voto"]} for p in cannonieri],
+        [{"nome":p["nome"],"squadra":p["squadra"],"gol":p["gol"],"assist":p["assist"],"voto":p["voto"]} for p in cannonieri],
         [{"nome":p["nome"],"squadra":p["squadra"],"voto":p["voto"]} for p in portieri]
     )
 
-# ── Leggi finali da PARTITE ───────────────────────────────────────────────────
-def calc_finali(rows_partite):
-    labels = ["Finale 1°/2°","Finale 3°/4°","Finale 5°/6°","Finale 7°/8°","Finale 9°/10°"]
-    fin_rows = [r for r in rows_partite if len(r)>1 and safe_str(r[1])=="FIN"]
-    finali = []
-    for i, row in enumerate(fin_rows[:5]):
-        ta = safe_str(row[2]); tb = safe_str(row[6] if len(row)>6 else "")
-        try: score = f"{int(float(str(row[3])))}-{int(float(str(row[5])))}"
-        except: score = None
+def calc_finali(rows):
+    labels=["Finale 1°/2°","Finale 3°/4°","Finale 5°/6°","Finale 7°/8°","Finale 9°/10°"]
+    fin_rows=[r for r in rows if len(r)>1 and safe_str(r[1])=="FIN"]
+    finali=[]
+    for i,row in enumerate(fin_rows[:5]):
+        ta=safe_str(row[2]); tb=safe_str(row[6] if len(row)>6 else "")
+        try: score=f"{int(float(str(row[3])))}-{int(float(str(row[5])))}"
+        except: score=None
         finali.append({
-            "label": labels[i] if i<len(labels) else f"Finale {i+1}",
-            "teamA": ta if ta and "TBD" not in ta else "TBD",
-            "teamB": tb if tb and "TBD" not in tb else "TBD",
-            "score": score,
+            "label":labels[i] if i<len(labels) else f"Finale {i+1}",
+            "teamA":ta if ta and "TBD" not in ta else "TBD",
+            "teamB":tb if tb and "TBD" not in tb else "TBD",
+            "score":score,
         })
     return finali
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def build():
     print(f"📂  Leggo  {ODS.name}  …")
-    if not ODS.exists():      sys.exit(f"❌  File non trovato: {ODS}")
-    if not TEMPLATE.exists(): sys.exit(f"❌  Template non trovato: {TEMPLATE}")
+    if not ODS.exists():          sys.exit(f"❌  File non trovato: {ODS}")
+    if not TEMPLATE.exists():     sys.exit(f"❌  Template non trovato: {TEMPLATE}")
+    if not INDEX_STATIC.exists(): sys.exit(f"❌  index_static.html non trovato: {INDEX_STATIC}")
 
     try:
         doc = load(str(ODS))
     except Exception as e:
         sys.exit(f"❌  Impossibile aprire il file ODS: {e}")
 
-    sheets = {s.getAttribute("name"): s
+    sheets = {s.getAttribute("name"):s
               for s in doc.spreadsheet.getElementsByType(Table)}
-
     for name in ("PARTITE","GIOCATORI"):
-        if name not in sheets:
-            sys.exit(f"❌  Foglio '{name}' non trovato nel file ODS.")
+        if name not in sheets: sys.exit(f"❌  Foglio '{name}' non trovato.")
 
     rows_p = expand_sheet(sheets["PARTITE"])
     rows_g = expand_sheet(sheets["GIOCATORI"])
@@ -165,14 +154,21 @@ def build():
     print(f"✅  Portieri:   {len(portieri)} portieri")
     print(f"✅  Finali:     {len(finali)} partite")
 
+    OUT_DIR.mkdir(exist_ok=True)
+
+    # Genera torneo.html dal template
     template = TEMPLATE.read_text(encoding="utf-8")
     output   = template.replace("__KAIROS_DATA__", json.dumps(data, ensure_ascii=False))
     if "__KAIROS_DATA__" in output:
         sys.exit("❌  Placeholder __KAIROS_DATA__ non trovato in index_template.html")
+    OUT_TORNEO.write_text(output, encoding="utf-8")
+    print(f"✅  Generato: {OUT_TORNEO.relative_to(ROOT)}")
 
-    OUT_DIR.mkdir(exist_ok=True)
-    OUT_HTML.write_text(output, encoding="utf-8")
-    print(f"\n🚀  Sito generato in:  {OUT_HTML.relative_to(ROOT)}")
+    # Copia index_static.html → index.html
+    shutil.copy(INDEX_STATIC, OUT_INDEX)
+    print(f"✅  Copiato:  {OUT_INDEX.relative_to(ROOT)}")
+
+    print(f"\n🚀  Sito pronto in docs/  — carica su GitHub per pubblicare.")
 
 if __name__ == "__main__":
     build()
