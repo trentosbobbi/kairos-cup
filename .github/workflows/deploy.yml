@@ -30,8 +30,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Installa openpyxl
-        run: pip install openpyxl
+      - name: Installa odfpy
+        run: pip install odfpy
 
       - name: Genera il sito HTML
         run: python build.py
