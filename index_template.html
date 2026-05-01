@@ -126,6 +126,73 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
 .f-tag{font-size:.9rem;color:var(--muted);font-style:italic;margin-bottom:24px}
 .f-cross{font-size:1.8rem;color:rgba(201,168,76,.4);margin-bottom:24px}
 .f-info{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.15em;color:rgba(141,160,188,.5);text-transform:uppercase}
+/* ── GIRONI VISUAL ───────────────────────────────────────────────────────── */
+.gironi-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:16px}
+.girone-block{background:var(--navy-l);border:1px solid rgba(201,168,76,.15);border-radius:8px;overflow:hidden}
+.girone-header{background:linear-gradient(135deg,var(--navy-s),var(--navy-l));padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(201,168,76,.2)}
+.girone-badge{font-family:'Cinzel',serif;font-size:.8rem;font-weight:700;color:var(--navy);background:var(--gold);padding:4px 12px;border-radius:2px;letter-spacing:.1em}
+.girone-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.girone-teams-preview{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.girone-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── BRACKET SEMIFINALI ──────────────────────────────────────────────────── */
+.bracket-wrap{position:relative;padding:24px 0}
+.bracket-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:24px}
+.bracket-col{display:flex;flex-direction:column;gap:16px}
+.bracket-match{background:var(--navy-l);border:1px solid rgba(201,168,76,.12);border-radius:6px;overflow:hidden;transition:border-color .2s;position:relative}
+.bracket-match:hover{border-color:rgba(201,168,76,.35)}
+.bracket-match-label{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,.08);padding:5px 12px;border-bottom:1px solid rgba(201,168,76,.1);display:flex;justify-content:space-between;align-items:center}
+.bracket-match-label .bm-seed{color:var(--muted);font-size:.5rem}
+.bracket-team{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;font-size:.85rem;font-weight:600;gap:8px;transition:background .15s}
+.bracket-team:first-of-type{border-bottom:1px solid rgba(255,255,255,.05)}
+.bracket-team:hover{background:rgba(201,168,76,.04)}
+.bracket-team.tbd{color:var(--muted);font-style:italic;font-weight:400}
+.bracket-team .bt-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-right:6px}
+.bracket-team .bt-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bracket-team .bt-score{font-family:'Cinzel',serif;font-weight:700;font-size:.95rem;color:var(--gold);min-width:18px;text-align:right;flex-shrink:0}
+.bracket-team.winner{background:rgba(201,168,76,.07)}
+.bracket-team.winner .bt-name{color:var(--gold)}
+.bracket-connector{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px}
+.bracket-connector-line{width:24px;height:1px;background:rgba(201,168,76,.25)}
+.bracket-arrow{color:rgba(201,168,76,.4);font-size:.8rem;margin:4px 0}
+/* Separator match in the middle (3°posto etc) */
+.bracket-sep{grid-column:1/-1;border-top:1px solid rgba(201,168,76,.1);margin:8px 0;position:relative}
+.bracket-sep-label{position:absolute;left:50%;top:-10px;transform:translateX(-50%);background:var(--navy);padding:0 12px;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.bracket-posizioni{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+@media(max-width:768px){.bracket-posizioni{grid-template-columns:1fr}}
+
+/* ── PODIO ───────────────────────────────────────────────────────────────── */
+.podio-wrap{display:flex;align-items:flex-end;justify-content:center;gap:0;margin-bottom:40px;height:180px}
+.podio-step{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1;max-width:200px;position:relative}
+.podio-team-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;text-align:center;margin-bottom:8px;padding:0 8px;line-height:1.3}
+.podio-medal{font-size:1.8rem;margin-bottom:6px}
+.podio-block{width:100%;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:1.4rem;font-weight:900;color:var(--navy)}
+.podio-step.p1 .podio-block{height:130px;background:linear-gradient(180deg,#FFD700,#C9A84C)}
+.podio-step.p2 .podio-block{height:90px;background:linear-gradient(180deg,#E0E0E0,#A0A0A0)}
+.podio-step.p3 .podio-block{height:65px;background:linear-gradient(180deg,#D4956A,#A0522D)}
+.podio-step.p1 .podio-team-name{color:var(--gold)}
+.podio-step.p2 .podio-team-name{color:#C0C0C0}
+.podio-step.p3 .podio-team-name{color:#CD7F32}
+.podio-tbd{color:var(--muted);font-style:italic;font-size:.72rem}
+.finali3-matches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.finali3-matches{grid-template-columns:1fr}}
+
+/* ── SQUADRE CARD (header + footer, no roster) ───────────────────────────── */
+.sq-card{background:var(--navy-m);border:1px solid rgba(201,168,76,.12);border-radius:8px;overflow:hidden;transition:all .3s;position:relative}
+.sq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.sq-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.35)}
+.sq-card:hover::before{opacity:1}
+.sq-head{background:linear-gradient(135deg,var(--navy-s),var(--navy-l));padding:20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(201,168,76,.15)}
+.sq-crest{width:48px;height:48px;border-radius:50%;border:2px solid rgba(201,168,76,.4);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.sq-name{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;color:var(--cream);margin-bottom:4px}
+.sq-city{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.sq-rec{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--gold);text-align:right;flex-shrink:0;margin-left:auto}
+.sq-rec small{font-family:'JetBrains Mono',monospace;font-size:.52rem;color:var(--muted);display:block;font-weight:400;letter-spacing:.1em}
+.sq-foot{padding:16px 20px;border-top:1px solid rgba(201,168,76,.08);display:flex;justify-content:space-around;align-items:center;gap:8px}
+.sq-stat-n{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:700;color:var(--cream);display:block;text-align:center}
+.sq-stat-l{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;display:block}
+.sq-pos-badge{position:absolute;top:12px;right:12px;font-family:'Cinzel',serif;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:2px;background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.25)}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── RESPONSIVE MOBILE ──────────────────────────────────────────────────── */
@@ -212,6 +279,13 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
 
   /* Squadre */
   .sq-grid{grid-template-columns:1fr}
+  /* Bracket */
+  .gironi-wrap{grid-template-columns:1fr !important}
+  .bracket-grid{grid-template-columns:1fr !important}
+  .bracket-connector{display:none !important}
+  .bracket-posizioni{grid-template-columns:1fr !important}
+  .finali3-matches{grid-template-columns:1fr !important}
+  .podio-wrap{height:auto}
 
   /* Modal */
   .mo{padding:12px}
@@ -252,21 +326,16 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   </div>
   <h1 class="hero-title">KAIROS<br>CUP</h1>
   <p class="hero-sub">Torneo delle Comunità Neocatecumenali · Nord Italia 2025</p>
-  <div class="hero-meta">
-    <div class="hero-meta-item"><span class="hero-meta-num">10</span><span class="hero-meta-label">Squadre</span></div>
-    <div class="hero-sep"></div>
-    <div class="hero-meta-item"><span class="hero-meta-num">45</span><span class="hero-meta-label">Partite</span></div>
-    <div class="hero-sep"></div>
-    <div class="hero-meta-item"><span class="hero-meta-num">7</span><span class="hero-meta-label">Gioc./Squadra</span></div>
-  </div>
   <div class="hero-hint">Scorri per scoprire</div>
 </header>
 
 <nav>
   <a href="#home" class="nav-logo">⚽ KAIROS CUP</a>
   <ul class="nav-links" id="nav-links">
+    <li><a href="#calendario" onclick="closeNav()">Calendario</a></li>
     <li><a href="#campionato" onclick="closeNav()">Classifica</a></li>
-    <li><a href="#finali" onclick="closeNav()">Finali</a></li>
+    <li><a href="#finali" onclick="closeNav()">Semifinali</a></li>
+    <li><a href="#fase3" onclick="closeNav()">Finali</a></li>
     <li><a href="#statistiche" onclick="closeNav()">Statistiche</a></li>
     <li><a href="#comunicati" onclick="closeNav()">Comunicati</a></li>
     <li><a href="#squadre" onclick="closeNav()">Squadre</a></li>
@@ -276,45 +345,120 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   </button>
 </nav>
 
-<!-- CLASSIFICA -->
+<!-- CALENDARIO -->
+<div class="sw" id="calendario">
+  <div class="sl">Calendario</div>
+  <h2 class="st">Partite <span>& Orari</span></h2>
+  <div id="calendario-container"></div>
+</div>
+
+<!-- CLASSIFICA GENERALE -->
 <div class="sw-bg">
 <div class="sw" id="campionato">
   <div class="sl">Fase 1</div>
-  <h2 class="st">Campionato <span>Avulso</span></h2>
-  <table class="standings-table">
-    <thead>
-      <tr><th>Pos</th><th>Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>Dr</th><th>Pt</th></tr>
-    </thead>
-    <tbody id="standings-body"></tbody>
-  </table>
-  <div style="font-size:.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-top:10px">G=Giocate · V=Vinte · N=Nulle · P=Perse · GF=Gol Fatti · GS=Gol Subiti · Dr=Differenza · Pt=Punti</div>
+  <h2 class="st">Classifica <span>Gironi</span></h2>
+  <div class="gironi-wrap">
+    <!-- Girone A -->
+    <div class="girone-block">
+      <div class="girone-header">
+        <span class="girone-badge">Girone A</span>
+        <span class="girone-label">Torino · Venezia · Mestre · Merano · Pordenone</span>
+      </div>
+      <table class="standings-table">
+        <thead><tr><th>Pos</th><th>Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>Dr</th><th>Pt</th></tr></thead>
+        <tbody id="standings-body-a"></tbody>
+      </table>
+    </div>
+    <!-- Girone B -->
+    <div class="girone-block">
+      <div class="girone-header">
+        <span class="girone-badge">Girone B</span>
+        <span class="girone-label">San Giorgio · Udine · Trieste 1 · Trieste 2 · Pordenone</span>
+      </div>
+      <table class="standings-table">
+        <thead><tr><th>Pos</th><th>Squadra</th><th>G</th><th>V</th><th>N</th><th>P</th><th>GF</th><th>GS</th><th>Dr</th><th>Pt</th></tr></thead>
+        <tbody id="standings-body-b"></tbody>
+      </table>
+    </div>
+  </div>
+  <div style="font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-top:12px">
+    G=Giocate · V=Vinte · N=Nulle · P=Perse · GF=Gol Fatti · GS=Gol Subiti · Dr=Differenza · Pt=Punti
+    <span style="margin-left:16px;color:rgba(201,168,76,.5)">▶ Le prime 2 di ogni girone si qualificano alle semifinali</span>
+  </div>
 </div></div>
 
-<!-- FINALI -->
+<!-- SEMIFINALI (FASE 2) -->
 <div class="sw" id="finali">
   <div class="sl">Fase 2</div>
-  <h2 class="st">Finali per <span>Posizione</span></h2>
-  <div class="finals-grid" id="finals-grid"></div>
-  <div style="font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-top:16px;font-style:italic">Le abbinamenti si aggiornano automaticamente dalla classifica del campionato avulso.</div>
+  <h2 class="st">Semifinali <span>& Incroci</span></h2>
+
+  <!-- Bracket principale: le due semifinali 1°/2° in incrocio -->
+  <div style="margin-bottom:8px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">
+    ▶ Accesso alle semifinali per titolo
+  </div>
+  <div class="bracket-grid" id="bracket-sf" style="margin-bottom:24px"></div>
+
+  <!-- Incroci di posizione 3°/4°/5° -->
+  <div style="margin-bottom:8px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">
+    ▶ Incroci per posizione
+  </div>
+  <div class="bracket-posizioni" id="bracket-pos"></div>
+
+  <div style="font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-top:20px;font-style:italic;line-height:1.6">
+    Semifinali: <strong style="color:var(--cream)">1ª A vs 2ª B</strong> · <strong style="color:var(--cream)">1ª B vs 2ª A</strong> &nbsp;·&nbsp; poi 3ª A vs 3ª B · 4ª A vs 4ª B · 5ª A vs 5ª B
+  </div>
 </div>
+
+<!-- FINALI (FASE 3) -->
+<div class="sw-bg">
+<div class="sw" id="fase3">
+  <div class="sl">Fase 3</div>
+  <h2 class="st">Finali <span>& Podio</span></h2>
+
+  <!-- Podio -->
+  <div class="podio-wrap" id="podio-wrap">
+    <div class="podio-step p2">
+      <div class="podio-team-name" id="podio-2">TBD</div>
+      <div class="podio-medal">🥈</div>
+      <div class="podio-block">2°</div>
+    </div>
+    <div class="podio-step p1">
+      <div class="podio-team-name" id="podio-1">TBD</div>
+      <div class="podio-medal">🏆</div>
+      <div class="podio-block">1°</div>
+    </div>
+    <div class="podio-step p3">
+      <div class="podio-team-name" id="podio-3">TBD</div>
+      <div class="podio-medal">🥉</div>
+      <div class="podio-block">3°</div>
+    </div>
+  </div>
+
+  <!-- Le 3 partite finali -->
+  <div class="finali3-matches" id="fase3-grid"></div>
+
+  <div style="font-size:.72rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-top:20px;font-style:italic">
+    Finale 1°/2° · Finale 3°/4° (tra perdenti delle semifinali) · Finale 5°/6°
+  </div>
+</div></div>
 
 <!-- STATISTICHE -->
 <div class="sw-bg">
 <div class="sw" id="statistiche">
   <div class="sl">Statistiche</div>
-  <h2 class="st">Migliori <span>Giocatori</span></h2>
+  <h2 class="st">Migliori Giocatori <span>& Squadre</span></h2>
   <div class="scorers-grid">
     <div class="sc-card">
       <div class="sc-head"><div class="sc-icon">⚽</div><div><div class="sc-title">Capocannonieri</div><div class="sc-sub">Classifica gol</div></div></div>
       <div id="scorers-gol"></div>
     </div>
     <div class="sc-card">
-      <div class="sc-head"><div class="sc-icon">🎯</div><div><div class="sc-title">Re degli Assist</div><div class="sc-sub">Classifica assist</div></div></div>
-      <div id="scorers-assist"></div>
+      <div class="sc-head"><div class="sc-icon">🔥</div><div><div class="sc-title">Miglior Attacco</div><div class="sc-sub">Gol segnati per squadra</div></div></div>
+      <div id="scorers-attacco"></div>
     </div>
     <div class="sc-card">
-      <div class="sc-head"><div class="sc-icon">🧤</div><div><div class="sc-title">Miglior Portiere</div><div class="sc-sub">Per voto medio</div></div></div>
-      <div id="scorers-portiere"></div>
+      <div class="sc-head"><div class="sc-icon">🛡️</div><div><div class="sc-title">Migliore Difesa</div><div class="sc-sub">Gol subiti per squadra</div></div></div>
+      <div id="scorers-difesa"></div>
     </div>
   </div>
 </div></div>
@@ -416,11 +560,112 @@ const TEAM_ICONS=["🔴","🔵","🟢","🟣","🟠","🔷","🟡","🌿","❤�
 const ALL_TEAMS=["Torino 1","Torino 2","Mestre 1","Venezia/Mestre","Merano","Pordenone","San Giorgio di Nogaro","Udine","Trieste 1","Trieste 2"];
 const TEAM_CITIES={"Torino 1":"📍 Torino, Piemonte","Torino 2":"📍 Torino, Piemonte","Mestre 1":"📍 Mestre, Veneto","Venezia/Mestre":"📍 Venezia/Mestre, Veneto","Merano":"📍 Merano, Alto Adige","Pordenone":"📍 Pordenone, FVG","San Giorgio di Nogaro":"📍 San Giorgio di Nogaro, FVG","Udine":"📍 Udine, FVG","Trieste 1":"📍 Trieste, FVG","Trieste 2":"📍 Trieste, FVG"};
 
-let D=__KAIROS_DATA__;
+// Girone A: prime 5 squadre, Girone B: ultime 5
+const GIRONE_A = ALL_TEAMS.slice(0,5);
+const GIRONE_B = ALL_TEAMS.slice(5,10);
 
-function renderStandings(){
-  const rows=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
-  document.getElementById('standings-body').innerHTML=rows.map((t,i)=>{
+let D=__KAIROS_DATA__;
+// ── DATI DEMO (visibili prima che build.py inietti i dati reali) ──────────────
+if(typeof D==='string'&&D==='__KAIROS_DATA__'||!D){D={
+  classifica:[
+    {pos:1,squadra:"Trieste 1",    G:8,V:6,N:1,P:1,GF:22,GS:9, Dr:13,Pt:19},
+    {pos:2,squadra:"Torino 1",     G:8,V:5,N:2,P:1,GF:18,GS:10,Dr:8, Pt:17},
+    {pos:3,squadra:"Udine",        G:8,V:5,N:1,P:2,GF:17,GS:12,Dr:5, Pt:16},
+    {pos:4,squadra:"Merano",       G:8,V:4,N:2,P:2,GF:15,GS:11,Dr:4, Pt:14},
+    {pos:5,squadra:"Mestre 1",     G:8,V:4,N:1,P:3,GF:14,GS:13,Dr:1, Pt:13},
+    {pos:6,squadra:"Trieste 2",    G:8,V:3,N:2,P:3,GF:12,GS:13,Dr:-1,Pt:11},
+    {pos:7,squadra:"Venezia/Mestre",G:8,V:3,N:1,P:4,GF:11,GS:15,Dr:-4,Pt:10},
+    {pos:8,squadra:"Torino 2",     G:8,V:2,N:2,P:4,GF:10,GS:16,Dr:-6,Pt:8},
+    {pos:9,squadra:"Pordenone",    G:8,V:1,N:1,P:6,GF:8, GS:19,Dr:-11,Pt:4},
+    {pos:10,squadra:"San Giorgio di Nogaro",G:8,V:0,N:1,P:7,GF:5,GS:24,Dr:-19,Pt:1}
+  ],
+  cannonieri:[
+    {nome:"Rossi Marco",     squadra:"Trieste 1",    gol:8,assist:3,voto:9},
+    {nome:"Bianchi Luca",    squadra:"Torino 1",     gol:6,assist:4,voto:8},
+    {nome:"Ferrari Andrea",  squadra:"Udine",        gol:5,assist:2,voto:8},
+    {nome:"Russo Paolo",     squadra:"Merano",       gol:5,assist:1,voto:7},
+    {nome:"Colombo Matteo",  squadra:"Mestre 1",     gol:4,assist:3,voto:8}
+  ],
+  portieri:[
+    {nome:"Esposito Giorgio",squadra:"Trieste 1",    voto:8},
+    {nome:"Ricci Simone",    squadra:"Torino 1",     voto:7}
+  ],
+  finali:[
+    {label:"Finale 1°/2°",  teamA:"Trieste 1",    teamB:"Torino 1",     score:"3-1"},
+    {label:"Finale 3°/4°",  teamA:"Udine",         teamB:"Merano",       score:"2-2"},
+    {label:"Finale 5°/6°",  teamA:"Mestre 1",      teamB:"Trieste 2",    score:null},
+    {label:"Finale 7°/8°",  teamA:"Venezia/Mestre",teamB:"Torino 2",     score:null},
+    {label:"Finale 9°/10°", teamA:"Pordenone",     teamB:"San Giorgio di Nogaro",score:null}
+  ],
+  partite:[
+    {giornata:"Giornata 1 · 19 Settembre",squadra1:"Trieste 1",squadra2:"Torino 1",gol1:3,gol2:1,orario:"09:00",stato:"done"},
+    {giornata:"Giornata 1 · 19 Settembre",squadra1:"Udine",squadra2:"Merano",gol1:2,gol2:0,orario:"09:45",stato:"done"},
+    {giornata:"Giornata 1 · 19 Settembre",squadra1:"Mestre 1",squadra2:"Torino 2",gol1:1,gol2:1,orario:"10:30",stato:"done"},
+    {giornata:"Giornata 2 · 19 Settembre",squadra1:"Torino 1",squadra2:"Merano",gol1:2,gol2:1,orario:"11:30",stato:"done"},
+    {giornata:"Giornata 2 · 19 Settembre",squadra1:"Trieste 2",squadra2:"Udine",gol1:0,gol2:2,orario:"12:15",stato:"done"},
+    {giornata:"Giornata 3 · 20 Settembre",squadra1:"Trieste 1",squadra2:"Mestre 1",gol1:null,gol2:null,orario:"09:00",stato:"upcoming"},
+    {giornata:"Giornata 3 · 20 Settembre",squadra1:"Torino 2",squadra2:"Udine",gol1:null,gol2:null,orario:"09:45",stato:"upcoming"}
+  ]
+};}
+
+// ── CALENDARIO ────────────────────────────────────────────────────────────────
+function renderCalendario(){
+  const partite = D.partite || [];
+  if(!partite.length){
+    document.getElementById('calendario-container').innerHTML=`<div class="no-data">Nessuna partita inserita.<br>Usa "Aggiorna Dati" per importare il calendario.</div>`;
+    return;
+  }
+  // Raggruppa per giornata / orario
+  const giorni = {};
+  partite.forEach(p=>{
+    const k = p.giornata || p.data || 'Da definire';
+    if(!giorni[k]) giorni[k]=[];
+    giorni[k].push(p);
+  });
+  const styles=`
+    <style>
+    .cal-day{margin-bottom:32px}
+    .cal-day-title{font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(201,168,76,.2)}
+    .cal-match{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--navy-m);border:1px solid rgba(201,168,76,.1);border-radius:6px;margin-bottom:8px;transition:border-color .2s}
+    .cal-match:hover{border-color:rgba(201,168,76,.35)}
+    .cal-time{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold);min-width:48px;flex-shrink:0}
+    .cal-teams{flex:1;display:flex;align-items:center;gap:10px;font-size:.92rem;font-weight:600}
+    .cal-vs{font-family:'Cinzel',serif;font-size:.75rem;color:var(--muted);flex-shrink:0}
+    .cal-score{font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold);min-width:60px;text-align:center;flex-shrink:0}
+    .cal-score.tbd{color:var(--muted);font-size:.7rem;font-family:'JetBrains Mono',monospace}
+    .cal-badge{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:2px 8px;border-radius:2px;flex-shrink:0}
+    .cal-badge.done{background:rgba(39,174,96,.12);color:#2ECC71;border:1px solid rgba(39,174,96,.2)}
+    .cal-badge.live{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.25);animation:pulse 1.5s infinite}
+    .cal-badge.upcoming{background:rgba(141,160,188,.08);color:var(--muted);border:1px solid rgba(141,160,188,.15)}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    </style>`;
+  const html = styles + Object.entries(giorni).map(([giorno, partiteGiorno])=>{
+    const matchHtml = partiteGiorno.map(p=>{
+      const hasScore = p.gol1!=null && p.gol2!=null;
+      const isLive = p.stato==='live';
+      const badge = isLive ? 'live' : hasScore ? 'done' : 'upcoming';
+      const badgeLabel = isLive ? '🔴 Live' : hasScore ? 'Terminata' : 'Da giocare';
+      const score = isLive||hasScore ? `${p.gol1}–${p.gol2}` : '—';
+      return `<div class="cal-match">
+        <div class="cal-time">${p.orario||'--:--'}</div>
+        <div class="cal-teams">
+          <span>${p.squadra1||'TBD'}</span>
+          <span class="cal-vs">vs</span>
+          <span>${p.squadra2||'TBD'}</span>
+        </div>
+        <div class="cal-score ${hasScore||isLive?'':'tbd'}">${score}</div>
+        <div class="cal-badge ${badge}">${badgeLabel}</div>
+      </div>`;
+    }).join('');
+    return `<div class="cal-day"><div class="cal-day-title">${giorno}</div>${matchHtml}</div>`;
+  }).join('');
+  document.getElementById('calendario-container').innerHTML=html;
+}
+
+// ── CLASSIFICHE GIRONI ────────────────────────────────────────────────────────
+function standingsRows(squadre, classifica){
+  const rows=[...classifica.filter(t=>squadre.includes(t.squadra))].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
+  return rows.map((t,i)=>{
     const rk=i+1,rc=rk<=3?'rk'+rk:'',rb=['r1','r2','r3','rn'][Math.min(rk-1,3)];
     const sym=rk===1?'🏆':rk===2?'🥈':rk===3?'🥉':rk;
     const idx=ALL_TEAMS.indexOf(t.squadra);
@@ -435,57 +680,177 @@ function renderStandings(){
   }).join('');
 }
 
+function renderStandings(){
+  document.getElementById('standings-body-a').innerHTML=standingsRows(GIRONE_A, D.classifica);
+  document.getElementById('standings-body-b').innerHTML=standingsRows(GIRONE_B, D.classifica);
+}
+
+// ── FASE 2: SEMIFINALI BRACKET ────────────────────────────────────────────────
+function getTop(squadre, n){
+  return [...D.classifica.filter(t=>squadre.includes(t.squadra))]
+    .sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0))
+    .slice(0,n).map(t=>t.squadra);
+}
+
+function teamColor(name){
+  const idx=ALL_TEAMS.indexOf(name);
+  return TEAM_COLORS[idx>=0?idx:0];
+}
+
+function bracketMatch(lbl, seed, t1, t2, score1, score2){
+  const w1 = score1!=null&&score2!=null&&score1>score2;
+  const w2 = score1!=null&&score2!=null&&score2>score1;
+  const isTbd = !t1||t1==='TBD'||t1.startsWith('TBD');
+  const isTbd2= !t2||t2==='TBD'||t2.startsWith('TBD');
+  const dot1 = `<span class="bt-dot" style="background:${teamColor(t1)}"></span>`;
+  const dot2 = `<span class="bt-dot" style="background:${teamColor(t2)}"></span>`;
+  return `<div class="bracket-match">
+    <div class="bracket-match-label">${lbl}<span class="bm-seed">${seed}</span></div>
+    <div class="bracket-team${w1?' winner':''}${isTbd?' tbd':''}">
+      ${!isTbd?dot1:''}<span class="bt-name">${t1||'TBD'}</span>
+      <span class="bt-score">${score1!=null?score1:'—'}</span>
+    </div>
+    <div class="bracket-team${w2?' winner':''}${isTbd2?' tbd':''}">
+      ${!isTbd2?dot2:''}<span class="bt-name">${t2||'TBD'}</span>
+      <span class="bt-score">${score2!=null?score2:'—'}</span>
+    </div>
+  </div>`;
+}
+
 function renderFinals(){
-  const srt=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
-  const labels=["Finale 1°/2°","Finale 3°/4°","Finale 5°/6°","Finale 7°/8°","Finale 9°/10°"];
-  document.getElementById('finals-grid').innerHTML=labels.map((lbl,i)=>{
-    const t1=srt[i*2]?.squadra||'TBD', t2=srt[i*2+1]?.squadra||'TBD';
-    const ok=srt[i*2]&&srt[i*2+1];
-    return `<div class="final-match"><div class="final-label">${lbl}</div>
-    <div class="final-team${ok?'':' tbd'}"><span>${t1}</span><span class="final-score" style="color:${ok?'var(--gold)':'var(--muted)'}">—</span></div>
-    <div class="final-team${ok?'':' tbd'}"><span>${t2}</span><span class="final-score" style="color:${ok?'var(--gold)':'var(--muted)'}">—</span></div></div>`;
+  const topA = getTop(GIRONE_A, 5);
+  const topB = getTop(GIRONE_B, 5);
+
+  // Bracket semifinali (2 match in incrocio A vs B)
+  const sf1 = bracketMatch('Semifinale 1', '1ªA vs 2ªB', topA[0]||'TBD (1ª A)', topB[1]||'TBD (2ª B)', null, null);
+  const sf2 = bracketMatch('Semifinale 2', '1ªB vs 2ªA', topB[0]||'TBD (1ª B)', topA[1]||'TBD (2ª A)', null, null);
+
+  document.getElementById('bracket-sf').innerHTML = `
+    <div class="bracket-col">${sf1}</div>
+    <div class="bracket-connector">
+      <div class="bracket-connector-line"></div>
+      <div class="bracket-arrow">⟶</div>
+      <div style="font-family:'Cinzel',serif;font-size:.6rem;color:var(--gold);letter-spacing:.15em;white-space:nowrap">FINALE</div>
+      <div class="bracket-arrow">⟵</div>
+      <div class="bracket-connector-line"></div>
+    </div>
+    <div class="bracket-col">${sf2}</div>`;
+
+  // Incroci di posizione
+  const pos = [
+    bracketMatch('3° posto', '3ªA vs 3ªB', topA[2]||'TBD (3ª A)', topB[2]||'TBD (3ª B)', null, null),
+    bracketMatch('4° posto', '4ªA vs 4ªB', topA[3]||'TBD (4ª A)', topB[3]||'TBD (4ª B)', null, null),
+    bracketMatch('5° posto', '5ªA vs 5ªB', topA[4]||'TBD (5ª A)', topB[4]||'TBD (5ª B)', null, null),
+  ];
+  document.getElementById('bracket-pos').innerHTML = pos.join('');
+}
+
+// ── FASE 3: FINALI + PODIO ────────────────────────────────────────────────────
+function renderFase3(){
+  const finali = D.finali || [];
+  const cls = [...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
+
+  // Prende la squadra per posizione finale (1°,2°,3°,4°...)
+  function teamAt(pos){ return (cls[pos-1]||{}).squadra||'TBD'; }
+
+  // Mappa label → dati finali se disponibili dall'ODS
+  function findFinal(keyword){ return finali.find(f=>f.label&&f.label.includes(keyword)); }
+
+  const matches = [
+    { lbl:'🏆 Finale 1° / 2°', f: findFinal('1°'), def1: teamAt(1), def2: teamAt(2) },
+    { lbl:'🥉 Finale 3° / 4°', f: findFinal('3°'), def1: teamAt(3), def2: teamAt(4) },
+    { lbl:'Finale 5° / 6°',    f: findFinal('5°'), def1: teamAt(5), def2: teamAt(6) },
+  ];
+
+  // Podio: leggi dal risultato della finale 1°/2° e 3°/4°
+  const f12 = matches[0].f; const f34 = matches[1].f;
+  let p1=teamAt(1), p2=teamAt(2), p3=teamAt(3);
+  if(f12&&f12.score){ const [g1,g2]=f12.score.split('-').map(Number);
+    p1=g1>g2?f12.teamA:f12.teamB; p2=g1>g2?f12.teamB:f12.teamA; }
+  if(f34&&f34.score){ const [g1,g2]=f34.score.split('-').map(Number);
+    p3=g1>g2?f34.teamA:f34.teamB; }
+
+  document.getElementById('podio-1').textContent = p1||'TBD';
+  document.getElementById('podio-2').textContent = p2||'TBD';
+  document.getElementById('podio-3').textContent = p3||'TBD';
+
+  document.getElementById('fase3-grid').innerHTML = matches.map(({lbl,f,def1,def2})=>{
+    const t1=f?f.teamA:def1, t2=f?f.teamB:def2;
+    const scored=f&&f.score; const [g1,g2]=scored?f.score.split('-').map(Number):[null,null];
+    const w1=scored&&g1>g2, w2=scored&&g2>g1;
+    const isTbd1=!t1||t1==='TBD', isTbd2=!t2||t2==='TBD';
+    const d1=`<span class="bt-dot" style="background:${teamColor(t1)}"></span>`;
+    const d2=`<span class="bt-dot" style="background:${teamColor(t2)}"></span>`;
+    return `<div class="bracket-match">
+      <div class="bracket-match-label">${lbl}</div>
+      <div class="bracket-team${w1?' winner':''}${isTbd1?' tbd':''}">
+        ${!isTbd1?d1:''}<span class="bt-name">${t1||'TBD'}</span>
+        <span class="bt-score">${g1!=null?g1:'—'}</span>
+      </div>
+      <div class="bracket-team${w2?' winner':''}${isTbd2?' tbd':''}">
+        ${!isTbd2?d2:''}<span class="bt-name">${t2||'TBD'}</span>
+        <span class="bt-score">${g2!=null?g2:'—'}</span>
+      </div>
+    </div>`;
   }).join('');
 }
 
+// ── STATISTICHE ───────────────────────────────────────────────────────────────
 function srRow(p,i,key,unit){
   const rk=i+1,rc=['r1c','r2c','r3c','rnc'][Math.min(rk-1,3)];
-  const ini=(p.nome||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+  const ini=(p.nome||p.squadra||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
   return `<div class="sr"><div class="sr-rank ${rc}">${rk}</div>
   <div class="sr-av">${ini}</div>
-  <div class="sr-info"><div class="sr-name">${p.nome||'—'}</div><div class="sr-team">${p.squadra||''}</div></div>
+  <div class="sr-info"><div class="sr-name">${p.nome||p.squadra||'—'}</div><div class="sr-team">${p.squadra||''}</div></div>
   <div class="sr-val">${p[key]||0}<small>${unit}</small></div></div>`;
 }
 const noData=m=>`<div class="no-data">${m}<br>Usa "Aggiorna Dati" per importare.</div>`;
 
 function renderScorers(){
   const can=(D.cannonieri||[]).filter(p=>p.nome);
-  document.getElementById('scorers-gol').innerHTML=can.length?can.sort((a,b)=>(b.gol||0)-(a.gol||0)).slice(0,5).map((p,i)=>srRow(p,i,'gol','GOL')).join(''):noData('Nessun dato cannonieri');
-  document.getElementById('scorers-assist').innerHTML=can.length?can.sort((a,b)=>(b.assist||0)-(a.assist||0)).slice(0,5).map((p,i)=>srRow(p,i,'assist','ASS')).join(''):noData('Nessun dato assist');
-  const por=(D.portieri||[]).filter(p=>p.nome);
-  document.getElementById('scorers-portiere').innerHTML=por.length?por.sort((a,b)=>(b.voto||0)-(a.voto||0)).slice(0,5).map((p,i)=>srRow(p,i,'voto','VOTO')).join(''):noData('Nessun dato portieri');
+  document.getElementById('scorers-gol').innerHTML=can.length
+    ?can.sort((a,b)=>(b.gol||0)-(a.gol||0)).slice(0,5).map((p,i)=>srRow(p,i,'gol','GOL')).join('')
+    :noData('Nessun dato cannonieri');
+
+  // Miglior attacco: da classifica squadre per GF
+  const cls=[...D.classifica].sort((a,b)=>(b.GF||0)-(a.GF||0)).slice(0,5);
+  document.getElementById('scorers-attacco').innerHTML=cls.length
+    ?cls.map((t,i)=>srRow({nome:t.squadra,squadra:'',GF:t.GF},i,'GF','GOL')).join('')
+    :noData('Nessun dato');
+
+  // Migliore difesa: meno gol subiti
+  const def=[...D.classifica].sort((a,b)=>(a.GS||0)-(b.GS||0)).slice(0,5);
+  document.getElementById('scorers-difesa').innerHTML=def.length
+    ?def.map((t,i)=>srRow({nome:t.squadra,squadra:'',GS:t.GS},i,'GS','GS')).join('')
+    :noData('Nessun dato');
 }
 
+// ── SQUADRE (header + stats footer, no roster) ────────────────────────────────
 function renderSquadre(){
-  const srt=[...D.classifica].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
   document.getElementById('squadre-grid').innerHTML=ALL_TEAMS.map((name,i)=>{
-    const st=D.classifica.find(t=>t.squadra===name)||{G:0,V:0,N:0,P:0,GF:0,GS:0,Pt:0};
-    const col=TEAM_COLORS[i%10],icon=TEAM_ICONS[i%10],city=TEAM_CITIES[name]||'📍 Nord Italia';
-    const roster=[{n:1,nome:'Portiere',r:'P'},{n:2,nome:'Difensore 1',r:'D'},{n:3,nome:'Difensore 2',r:'D'},{n:7,nome:'Centrocampista 1',r:'C'},{n:8,nome:'Centrocampista 2',r:'C'},{n:9,nome:'Ala',r:'C'},{n:10,nome:'Attaccante',r:'A'}];
+    const st=D.classifica.find(t=>t.squadra===name)||{G:0,V:0,N:0,P:0,GF:0,GS:0,Pt:0,pos:i+1};
+    const col=TEAM_COLORS[i%10], icon=TEAM_ICONS[i%10], city=TEAM_CITIES[name]||'📍 Nord Italia';
+    const pos = st.pos||i+1;
+    const posLabel = pos===1?'🏆':pos===2?'🥈':pos===3?'🥉':`${pos}°`;
     return `<div class="sq-card">
-    <div class="sq-head">
-      <div class="sq-crest" style="background:linear-gradient(135deg,${col}44,${col}22)">${icon}</div>
-      <div><div class="sq-name">${name}</div><div class="sq-city">${city}</div></div>
-      <div class="sq-rec">${st.V||0}V ${st.N||0}N ${st.P||0}P<small>record</small></div>
-    </div>
-    <div style="padding:8px 0">${roster.map(p=>`<div class="pl"><div class="pl-n">${p.n}</div><div class="pl-name">${p.nome}</div><span class="pl-r r${p.r}">${p.r}</span></div>`).join('')}</div>
-    <div class="sq-foot">
-      <div><span class="sq-stat-n">${st.GF||0}</span><span class="sq-stat-l">Gol Fatti</span></div>
-      <div><span class="sq-stat-n">${st.GS||0}</span><span class="sq-stat-l">Gol Subiti</span></div>
-      <div><span class="sq-stat-n">${st.Pt||0}</span><span class="sq-stat-l">Punti</span></div>
-    </div></div>`;
+      <span class="sq-pos-badge">${posLabel}</span>
+      <div class="sq-head">
+        <div class="sq-crest" style="background:linear-gradient(135deg,${col}44,${col}22);border-color:${col}66">${icon}</div>
+        <div>
+          <div class="sq-name">${name}</div>
+          <div class="sq-city">${city}</div>
+        </div>
+        <div class="sq-rec">${st.V||0}V ${st.N||0}N ${st.P||0}P<small>record</small></div>
+      </div>
+      <div class="sq-foot">
+        <div><span class="sq-stat-n">${st.GF||0}</span><span class="sq-stat-l">Gol Fatti</span></div>
+        <div><span class="sq-stat-n">${st.GS||0}</span><span class="sq-stat-l">Gol Subiti</span></div>
+        <div><span class="sq-stat-n" style="color:var(--gold)">${st.Pt||0}</span><span class="sq-stat-l">Punti</span></div>
+        <div><span class="sq-stat-n">${st.G||0}</span><span class="sq-stat-l">Partite</span></div>
+      </div>
+    </div>`;
   }).join('');
 }
-
 
 function toggleNav(){
   const nav=document.getElementById('nav-links');
@@ -501,7 +866,15 @@ function openMo(id){document.getElementById('mo-'+id).classList.add('open');}
 function closeMo(e,el){if(e.target===el)el.classList.remove('open');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mo.open').forEach(m=>m.classList.remove('open'));});
 
-function renderAll(){renderStandings();renderFinals();renderScorers();renderSquadre();}
+@media(max-width:768px){
+  .gironi-wrap{grid-template-columns:1fr}
+  .bracket-grid{grid-template-columns:1fr;gap:12px}
+  .bracket-grid .bracket-connector{display:none}
+  .bracket-posizioni{grid-template-columns:1fr}
+  .finali3-matches{grid-template-columns:1fr}
+}
+
+function renderAll(){renderCalendario();renderStandings();renderFinals();renderFase3();renderScorers();renderSquadre();}
 renderAll();
 </script>
 </body>
