@@ -825,12 +825,6 @@ function renderScorers(){
 }
 
 // ── SQUADRE (header + stats footer, no roster) ────────────────────────────────
-  <div class="sw-bg">
-<div class="sw" id="squadre">
-  <div class="sl">Partecipanti</div>
-  <h2 class="st">Le <span>Squadre</span></h2>
-  <div class="sq-grid" id="squadre-grid"></div>
-</div></div>
 function renderSquadre(){
   document.getElementById('squadre-grid').innerHTML=ALL_TEAMS.map((name,i)=>{
     const st=D.classifica.find(t=>t.squadra===name)||{G:0,V:0,N:0,P:0,GF:0,GS:0,Pt:0,pos:i+1};
