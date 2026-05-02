@@ -149,18 +149,23 @@ def build():
     data = {"classifica":classifica,"cannonieri":cannonieri,
             "portieri":portieri,"finali":finali}
 
-    print(f"✅  Classifica: {len(classifica)} squadre")
+    partite_giocate = sum(1 for t in classifica if t.get("G",0) > 0)
+    ha_dati_reali   = partite_giocate > 0 or len(cannonieri) > 0
+
+    print(f"✅  Classifica: {len(classifica)} squadre ({partite_giocate} con partite)")
     print(f"✅  Cannonieri: {len(cannonieri)} giocatori")
     print(f"✅  Portieri:   {len(portieri)} portieri")
     print(f"✅  Finali:     {len(finali)} partite")
 
     OUT_DIR.mkdir(exist_ok=True)
 
-    # Genera torneo.html dal template
     template = TEMPLATE.read_text(encoding="utf-8")
-    output   = template.replace("__KAIROS_DATA__", json.dumps(data, ensure_ascii=False))
-    if "__KAIROS_DATA__" in output:
-        sys.exit("❌  Placeholder __KAIROS_DATA__ non trovato in index_template.html")
+    if ha_dati_reali:
+        output = template.replace("'__KAIROS_DATA__'", "'" + json.dumps(data, ensure_ascii=False) + "'")
+        print(f"✅  Dati reali iniettati nel sito")
+    else:
+        output = template
+        print(f"ℹ️   ODS vuoto — il sito mostra i dati demo")
     OUT_TORNEO.write_text(output, encoding="utf-8")
     print(f"✅  Generato: {OUT_TORNEO.relative_to(ROOT)}")
 
