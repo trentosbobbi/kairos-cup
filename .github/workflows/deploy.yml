@@ -3,8 +3,9 @@ name: Aggiorna Sito Kairos Cup
 on:
   push:
     paths:
-      - "KairosCup_Dati.xlsx"   # si attiva solo quando carichi l'Excel
-      - "index_template.html"   # oppure quando aggiorni il template
+      - "KairosCup_Dati.ods"
+      - "index_template.html"
+      - "index_static.html"
       - "build.py"
   workflow_dispatch:            # permette di avviare manualmente da GitHub
 
