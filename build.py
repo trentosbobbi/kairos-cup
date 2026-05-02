@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 
 """
 Kairos Cup 2025 — Build Script
 Legge KairosCup_Dati.ods, calcola tutto in Python, genera:
