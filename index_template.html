@@ -14,8 +14,8 @@ body{font-family:'Crimson Pro',Georgia,serif;background:var(--navy);color:var(--
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.06) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%)}
 .hero-glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%)}
 .hero-badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,.3);padding:6px 20px;border-radius:2px;margin-bottom:32px;animation:fadeUp .8s ease both}
-.hero-emblem{width:120px;height:120px;margin:0 auto 24px;animation:fadeUp .9s ease both .1s}
-.hero-emblem svg{width:100%;height:100%}
+.hero-emblem{width:150px;height:150px;margin:0 auto 24px;animation:fadeUp .9s ease both .1s}
+.hero-emblem img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(201,168,76,.35))}
 .hero-title{font-family:'Cinzel',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:900;line-height:.9;letter-spacing:-.02em;background:linear-gradient(180deg,var(--gold-l) 0%,var(--gold) 50%,var(--gold-d) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 1s ease both .2s}
 .hero-sub{font-size:1.3rem;color:var(--cream-d);font-style:italic;margin-top:16px;letter-spacing:.05em;animation:fadeUp 1s ease both .35s}
 .hero-meta{display:flex;gap:40px;margin-top:40px;align-items:center;justify-content:center;animation:fadeUp 1s ease both .5s}
@@ -130,10 +130,8 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
 
 /* ── RESPONSIVE MOBILE ──────────────────────────────────────────────────── */
 @media(max-width:768px){
-
-  /* Hero */
   .hero-badge{font-size:.6rem;letter-spacing:.15em;padding:5px 14px}
-  .hero-emblem{width:80px;height:80px;margin-bottom:16px}
+  .hero-emblem{width:100px;height:100px;margin-bottom:16px}
   .hero-title{font-size:clamp(2.8rem,14vw,4.5rem)}
   .hero-sub{font-size:1rem;padding:0 16px}
   .hero-meta{gap:20px;margin-top:28px}
@@ -141,8 +139,6 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   .hero-meta-label{font-size:.58rem}
   .hero-sep{height:28px}
   .hero-hint{bottom:24px}
-
-  /* Nav — hamburger menu */
   nav{padding:0 20px;height:56px;position:relative}
   .nav-links{
     display:none;
@@ -184,11 +180,7 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .nav-hamburger.open span:nth-child(2){opacity:0}
   .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-  /* Sections */
   .sw{padding:60px 20px}
-
-  /* Standings table — nascondi colonne meno importanti */
   .standings-table th:nth-child(4),
   .standings-table td:nth-child(4),
   .standings-table th:nth-child(5),
@@ -198,26 +190,14 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   .standings-table th,.standings-table td{padding:10px 8px;font-size:.82rem}
   .standings-table td:nth-child(2){font-size:.82rem}
   .team-dot{width:6px;height:6px}
-
-  /* Finali */
   .finals-grid{grid-template-columns:1fr 1fr !important}
-
-  /* Statistiche */
   .scorers-grid{grid-template-columns:1fr !important}
-
-  /* Comunicati */
   .com-grid{grid-template-columns:1fr !important}
   .com.feat{grid-column:auto}
   .com-date{float:none;display:block;margin-bottom:8px}
-
-  /* Squadre */
   .sq-grid{grid-template-columns:1fr}
-
-  /* Modal */
   .mo{padding:12px}
   .mo-box{padding:24px 20px;max-height:90vh}
-
-  /* Footer */
   footer{padding:36px 20px}
 }
 
@@ -298,16 +278,7 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   <div class="hero-glow"></div>
   <div class="hero-badge">Campo Giarizzole · Trieste · Calcio a 7</div>
   <div class="hero-emblem">
-    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="60" cy="60" r="55" stroke="#C9A84C" stroke-width="1.5"/>
-      <circle cx="60" cy="60" r="48" stroke="rgba(201,168,76,0.3)" stroke-width=".5"/>
-      <line x1="60" y1="18" x2="60" y2="102" stroke="#C9A84C" stroke-width="2.5"/>
-      <line x1="20" y1="50" x2="100" y2="50" stroke="#C9A84C" stroke-width="2.5"/>
-      <circle cx="60" cy="72" r="14" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,.07)"/>
-      <path d="M60 58 L54 66 L57 74 L63 74 L66 66 Z" fill="rgba(201,168,76,.5)"/>
-      <circle cx="38" cy="34" r="2" fill="#C9A84C"/><circle cx="60" cy="28" r="2" fill="#C9A84C"/><circle cx="82" cy="34" r="2" fill="#C9A84C"/>
-      <text x="60" y="48" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="#C9A84C" font-weight="700">KAIROS</text>
-    </svg>
+    <img src="https://raw.githubusercontent.com/trentosbobbi/trentosbobbi.github.io/main/logo.png" alt="Kairos Cup Logo" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(201,168,76,.35))">
   </div>
   <h1 class="hero-title">KAIROS<br>CUP</h1>
   <p class="hero-sub">Torneo delle Comunità Neocatecumenali · Nord Italia · 2026</p>
@@ -519,19 +490,15 @@ footer{background:#070E1A;border-top:1px solid rgba(201,168,76,.12);padding:48px
   </div>
 </div>
 
-
-
 <script>
 const TEAM_COLORS=["#E74C3C","#3498DB","#2ECC71","#9B59B6","#E67E22","#1ABC9C","#F39C12","#27AE60","#C0392B","#2980B9"];
 const TEAM_ICONS=["🔴","🔵","🟢","🟣","🟠","🔷","🟡","🌿","❤️","⚡"];
 const ALL_TEAMS=["Torino 1","Torino 2","Mestre 1","Venezia/Mestre","Merano","Pordenone","San Giorgio di Nogaro","Udine","Trieste 1","Trieste 2"];
 const TEAM_CITIES={"Torino 1":"📍 Torino, Piemonte","Torino 2":"📍 Torino, Piemonte","Mestre 1":"📍 Mestre, Veneto","Venezia/Mestre":"📍 Venezia/Mestre, Veneto","Merano":"📍 Merano, Alto Adige","Pordenone":"📍 Pordenone, FVG","San Giorgio di Nogaro":"📍 San Giorgio di Nogaro, FVG","Udine":"📍 Udine, FVG","Trieste 1":"📍 Trieste, FVG","Trieste 2":"📍 Trieste, FVG"};
 
-// Girone A: prime 5 squadre, Girone B: ultime 5
 const GIRONE_A = ALL_TEAMS.slice(0,5);
 const GIRONE_B = ALL_TEAMS.slice(5,10);
 
-// ── DATI (iniettati da build.py oppure demo) ─────────────────────────────────
 const _raw='__KAIROS_DATA__';
 let D;
 try{ D=(_raw.startsWith('{'))?JSON.parse(_raw):null; }catch(e){ D=null; }
@@ -576,14 +543,12 @@ if(!D){D={
   ]
 };}
 
-// ── CALENDARIO ────────────────────────────────────────────────────────────────
 function renderCalendario(){
   const partite = D.partite || [];
   if(!partite.length){
     document.getElementById('calendario-container').innerHTML=`<div class="no-data">Nessuna partita inserita.<br>Usa "Aggiorna Dati" per importare il calendario.</div>`;
     return;
   }
-  // Raggruppa per giornata / orario
   const giorni = {};
   partite.forEach(p=>{
     const k = p.giornata || p.data || 'Da definire';
@@ -630,7 +595,6 @@ function renderCalendario(){
   document.getElementById('calendario-container').innerHTML=html;
 }
 
-// ── CLASSIFICHE GIRONI ────────────────────────────────────────────────────────
 function standingsRows(squadre, classifica){
   const rows=[...classifica.filter(t=>squadre.includes(t.squadra))].sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0));
   return rows.map((t,i)=>{
@@ -653,14 +617,11 @@ function renderStandings(){
   document.getElementById('standings-body-b').innerHTML=standingsRows(GIRONE_B, D.classifica);
 }
 
-// ── FASE 2: SEMIFINALI ────────────────────────────────────────────────────────
 function getTop(squadre, n){
   return [...D.classifica.filter(t=>squadre.includes(t.squadra))]
     .sort((a,b)=>b.Pt!==a.Pt?b.Pt-a.Pt:(b.Dr||0)-(a.Dr||0))
     .slice(0,n).map(t=>t.squadra);
 }
-
-
 
 function teamColor(name){const idx=ALL_TEAMS.indexOf(name);return TEAM_COLORS[idx>=0?idx:0];}
 
@@ -698,7 +659,6 @@ function renderFase3(){
     </div>`).join('');
 }
 
-// ── STATISTICHE ───────────────────────────────────────────────────────────────
 function srRow(p,i,key,unit){
   const rk=i+1,rc=['r1c','r2c','r3c','rnc'][Math.min(rk-1,3)];
   const ini=(p.nome||p.squadra||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
@@ -714,21 +674,16 @@ function renderScorers(){
   document.getElementById('scorers-gol').innerHTML=can.length
     ?can.sort((a,b)=>(b.gol||0)-(a.gol||0)).slice(0,5).map((p,i)=>srRow(p,i,'gol','GOL')).join('')
     :noData('Nessun dato cannonieri');
-
-  // Miglior attacco: da classifica squadre per GF
   const cls=[...D.classifica].sort((a,b)=>(b.GF||0)-(a.GF||0)).slice(0,5);
   document.getElementById('scorers-attacco').innerHTML=cls.length
     ?cls.map((t,i)=>srRow({nome:t.squadra,squadra:'',GF:t.GF},i,'GF','GOL')).join('')
     :noData('Nessun dato');
-
-  // Migliore difesa: meno gol subiti
   const def=[...D.classifica].sort((a,b)=>(a.GS||0)-(b.GS||0)).slice(0,5);
   document.getElementById('scorers-difesa').innerHTML=def.length
     ?def.map((t,i)=>srRow({nome:t.squadra,squadra:'',GS:t.GS},i,'GS','GS')).join('')
     :noData('Nessun dato');
 }
 
-// ── SQUADRE ───────────────────────────────────────────────────────────────────
 function renderSquadre(){
   document.getElementById('squadre-grid').innerHTML=ALL_TEAMS.map((name,i)=>{
     const st=D.classifica.find(t=>t.squadra===name)||{G:0,V:0,N:0,P:0,GF:0,GS:0,Pt:0,pos:i+1};
@@ -769,7 +724,6 @@ function openMo(id){document.getElementById('mo-'+id).classList.add('open');}
 function closeMo(e,el){if(e.target===el)el.classList.remove('open');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mo.open').forEach(m=>m.classList.remove('open'));});
 
-// Responsive gironi
 function applyGironiLayout(){
   const grid=document.querySelector('.gironi-grid');
   if(!grid)return;
